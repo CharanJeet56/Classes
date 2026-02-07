@@ -1,0 +1,5133 @@
+\documentclass[12pt,a4paper]{report}
+
+% ========================
+% PACKAGE IMPORTS
+% ========================
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ========================
+% COLOR DEFINITIONS
+% ========================
+\definecolor{primaryblue}{RGB}{0,102,204}
+\definecolor{secondaryblue}{RGB}{51,153,255}
+\definecolor{codebg}{RGB}{245,245,245}
+\definecolor{codecomment}{RGB}{0,128,0}
+\definecolor{codestring}{RGB}{163,21,21}
+\definecolor{codekeyword}{RGB}{0,0,255}
+
+% ========================
+% HYPERREF SETUP
+% ========================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    filecolor=primaryblue,
+    urlcolor=primaryblue,
+    citecolor=primaryblue,
+    pdftitle={C Programming Module Notes},
+    pdfauthor={D Charan Jeet}
+}
+
+% ========================
+% CODE LISTING SETUP
+% ========================
+\lstset{
+    language=C,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{codekeyword}\bfseries,
+    commentstyle=\color{codecomment}\itshape,
+    stringstyle=\color{codestring},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=single,
+    rulecolor=\color{gray},
+    tabsize=4,
+    breaklines=true,
+    breakatwhitespace=false,
+    captionpos=b,
+    xleftmargin=15pt,
+    xrightmargin=5pt,
+    aboveskip=10pt,
+    belowskip=10pt
+}
+
+% ========================
+% TCOLORBOX ENVIRONMENTS
+% ========================
+\newtcolorbox{conceptbox}[1]{
+    colback=secondaryblue!5,
+    colframe=primaryblue,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{warningbox}[1]{
+    colback=red!5,
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{tipbox}[1]{
+    colback=green!5,
+    colframe=green!65!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{examplebox}[1]{
+    colback=orange!5,
+    colframe=orange!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=2mm,
+    boxrule=0.5pt
+}
+
+% ========================
+% CHAPTER/SECTION FORMATTING
+% ========================
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{primaryblue}}
+{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{primaryblue}}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries\color{secondaryblue}}
+{\thesubsection}{1em}{}
+
+% ========================
+% HEADER/FOOTER SETUP
+% ========================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textit{Programming Notes — D Charan Jeet}}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\textit{Prepared by D Charan Jeet}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ========================
+% DOCUMENT METADATA
+% ========================
+\title{\textbf{\Huge C Programming Module Notes}\\[0.5cm]\Large Structured Learning Guide}
+\author{\textbf{D Charan Jeet}}
+\date{\today}
+
+% ========================
+% LINE SPACING
+% ========================
+\onehalfspacing
+
+% ========================
+% BEGIN DOCUMENT
+% ========================
+\begin{document}
+
+% ========================
+% COVER PAGE
+% ========================
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries\color{primaryblue} C Programming\\Module Notes\par}
+    \vspace{1cm}
+    {\Large\itshape Structured Learning Guide\par}
+    \vspace{2cm}
+    
+    \begin{tcolorbox}[colback=primaryblue!10,colframe=primaryblue,width=0.8\textwidth,arc=3mm,boxrule=1pt]
+        \centering
+        {\large A Structured Academic Curriculum for C Programming\par}
+        \vspace{0.3cm}
+        {\normalsize Comprehensive Notes for B.Tech / Computer Science Students\par}
+    \end{tcolorbox}
+    
+    \vspace{3cm}
+    {\Large\bfseries Author:\par}
+    {\LARGE D Charan Jeet\par}
+    \vspace{0.5cm}
+    {\large Curriculum Designer \& Technical Author\par}
+    
+    \vfill
+    
+    \begin{tcolorbox}[colback=orange!10,colframe=orange!75!black,width=0.8\textwidth,arc=3mm,boxrule=1pt]
+        \centering
+        \textbf{Prerequisites:} Basic Logic \& Mathematics\\[0.2cm]
+        \textbf{Format:} Modular Progressive Learning\\[0.2cm]
+        \textbf{Target:} Foundation to Advanced C Programming
+    \end{tcolorbox}
+    
+    \vfill
+    {\large \today\par}
+\end{titlepage}
+
+% ========================
+% TABLE OF CONTENTS
+% ========================
+\tableofcontents
+\newpage
+
+% ========================
+% LEVEL I: BASICS
+% ========================
+\chapter{Level I: BASICS}
+\section*{Building the Foundation of Computational Thinking}
+\addcontentsline{toc}{section}{Building the Foundation of Computational Thinking}
+
+\begin{conceptbox}{Chapter Overview}
+This foundational level introduces students to the C programming language, establishing core concepts of syntax, data representation, and basic operations. Mastery of these fundamentals is essential for all subsequent programming endeavors.
+\end{conceptbox}
+
+% ========================
+% MODULE 1: BASICS
+% ========================
+\section{Module 1: Basics of C Programming Foundation}
+
+\begin{tipbox}{Module Duration \& Objectives}
+\textbf{Duration:} 10 Hours\\[0.3cm]
+\textbf{Learning Objectives:}
+\begin{itemize}[leftmargin=*]
+    \item Understand the history and significance of the C language
+    \item Master the compilation process and development environment
+    \item Gain proficiency in basic data types, variables, and operators
+\end{itemize}
+\end{tipbox}
+
+% ========================
+% TOPIC: INTRODUCTION TO C
+% ========================
+\subsection{Introduction to C \& Programming Concepts}
+
+\subsubsection{Concept Overview}
+
+The C programming language, developed by Dennis Ritchie at Bell Laboratories in 1972, stands as one of the most influential programming languages in computer science history. C is a procedural, compiled language that bridges the gap between high-level abstraction and low-level hardware control.
+
+\begin{conceptbox}{Core Definition}
+C is a general-purpose, procedural programming language that provides low-level access to memory, requires minimal runtime support, and offers efficient mapping to machine instructions. It serves as the foundation for operating systems, embedded systems, and performance-critical applications.
+\end{conceptbox}
+
+\subsubsection{Why It Matters}
+
+Understanding C is crucial for several fundamental reasons:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{System Foundation}: Major operating systems (UNIX, Linux, Windows kernels) are written in C
+    \item \textbf{Performance Critical}: C provides direct memory manipulation and minimal overhead
+    \item \textbf{Language Influence}: C has influenced Java, C++, C\#, JavaScript, and many modern languages
+    \item \textbf{Hardware Interaction}: Enables direct hardware manipulation essential for embedded systems
+    \item \textbf{Interview Standard}: Fundamental C concepts are tested in technical interviews worldwide
+\end{enumerate}
+
+\subsubsection{Detailed Explanation}
+
+\textbf{History and Evolution}
+
+C evolved from the B language as part of the UNIX operating system development. Its design philosophy emphasized:
+\begin{itemize}[leftmargin=*]
+    \item Simplicity and efficiency
+    \item Portability across different hardware platforms
+    \item Powerful control structures
+    \item Rich set of operators
+\end{itemize}
+
+\textbf{Key Features of C}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Speed}: C compiles to efficient machine code with minimal runtime overhead
+    \item \textbf{Portability}: C programs can be compiled and executed on different platforms with minimal modification
+    \item \textbf{Structure}: Supports modular programming through functions
+    \item \textbf{Rich Library}: Extensive standard library for common operations
+    \item \textbf{Pointers}: Direct memory addressing capability
+    \item \textbf{Low-level Access}: Can manipulate hardware registers and memory addresses
+\end{enumerate}
+
+\subsubsection{Structure of a C Program}
+
+Every C program follows a standard structure:
+
+\begin{examplebox}{Basic C Program Structure}
+\begin{lstlisting}[language=C]
+/* Header Section - File inclusion and preprocessor directives */
+#include <stdio.h>
+#include <stdlib.h>
+
+/* Global declarations (if any) */
+int globalVariable = 100;
+
+/* Function prototypes */
+void displayMessage();
+
+/* Main Function - Program execution starts here */
+int main() {
+    // Local variable declarations
+    int localVariable = 50;
+    
+    // Program statements
+    printf("Hello, C Programming!\n");
+    printf("Local: %d, Global: %d\n", localVariable, globalVariable);
+    
+    // Function call
+    displayMessage();
+    
+    // Return statement
+    return 0;
+}
+
+/* Function definitions */
+void displayMessage() {
+    printf("This is a user-defined function.\n");
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{Components Explained:}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Header Section}: Contains preprocessor directives (\texttt{\#include}) that import library functions
+    \item \textbf{main() Function}: Entry point of program execution; must be present in every C program
+    \item \textbf{Function Body}: Enclosed in curly braces \texttt{\{\}}, contains executable statements
+    \item \textbf{Return Statement}: \texttt{return 0;} indicates successful program termination
+\end{itemize}
+
+\subsubsection{Compilation Process: From Source to Executable}
+
+Understanding compilation is critical to mastering C programming. The process involves four distinct stages:
+
+\begin{conceptbox}{The Four Stages of Compilation}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Preprocessing}: Handles directives starting with \#
+    \item \textbf{Compilation}: Converts preprocessed code to assembly language
+    \item \textbf{Assembly}: Converts assembly to machine code (object file)
+    \item \textbf{Linking}: Combines object files and libraries into executable
+\end{enumerate}
+\end{conceptbox}
+
+\textbf{Stage 1: Preprocessing}
+
+The preprocessor:
+\begin{itemize}[leftmargin=*]
+    \item Removes comments from source code
+    \item Expands \texttt{\#include} directives (includes header file contents)
+    \item Expands \texttt{\#define} macros
+    \item Processes conditional compilation directives (\texttt{\#ifdef}, \texttt{\#ifndef})
+\end{itemize}
+
+Command: \texttt{gcc -E program.c -o program.i}
+
+\textbf{Stage 2: Compilation}
+
+The compiler:
+\begin{itemize}[leftmargin=*]
+    \item Checks syntax and semantics
+    \item Converts C code to assembly language
+    \item Performs optimization
+    \item Generates assembly code (.s file)
+\end{itemize}
+
+Command: \texttt{gcc -S program.i -o program.s}
+
+\textbf{Stage 3: Assembly}
+
+The assembler:
+\begin{itemize}[leftmargin=*]
+    \item Converts assembly code to machine code
+    \item Produces object file (.o or .obj)
+    \item Contains binary code but not yet executable
+\end{itemize}
+
+Command: \texttt{gcc -c program.s -o program.o}
+
+\textbf{Stage 4: Linking}
+
+The linker:
+\begin{itemize}[leftmargin=*]
+    \item Combines multiple object files
+    \item Links library functions (printf, scanf, etc.)
+    \item Resolves external references
+    \item Produces final executable file
+\end{itemize}
+
+Command: \texttt{gcc program.o -o program}
+
+\begin{examplebox}{Complete Compilation Example}
+\begin{lstlisting}[language=bash]
+# Single command compilation (all stages)
+gcc program.c -o program
+
+# Step-by-step compilation
+gcc -E program.c -o program.i    # Preprocessing
+gcc -S program.i -o program.s    # Compilation
+gcc -c program.s -o program.o    # Assembly
+gcc program.o -o program         # Linking
+
+# Execute the program
+./program
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{Development Environments}
+
+\textbf{Command-Line Compilers:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{GCC} (GNU Compiler Collection): Most widely used, available on Linux/Unix/Windows
+    \item \textbf{Clang}: Modern compiler with better error messages
+    \item \textbf{MinGW}: Windows port of GCC
+\end{itemize}
+
+\textbf{Integrated Development Environments (IDEs):}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Code::Blocks}: Cross-platform, beginner-friendly
+    \item \textbf{Dev-C++}: Windows IDE for C/C++
+    \item \textbf{Visual Studio Code}: Lightweight with C extensions
+    \item \textbf{CLion}: Professional IDE by JetBrains
+\end{itemize}
+
+\subsubsection{Output Explanation}
+
+When you compile and run the basic structure example:
+
+\begin{verbatim}
+Hello, C Programming!
+Local: 50, Global: 100
+This is a user-defined function.
+\end{verbatim}
+
+The program executes linearly: \texttt{main()} starts, prints messages, calls the user-defined function, then terminates with return code 0.
+
+\subsubsection{Common Errors}
+
+\begin{warningbox}{Typical Beginner Mistakes}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Missing Semicolon}
+    \begin{lstlisting}[language=C]
+printf("Hello")  // Error: expected ';' before 'return'
+return 0;
+    \end{lstlisting}
+    
+    \item \textbf{Missing Header File}
+    \begin{lstlisting}[language=C]
+// Missing #include <stdio.h>
+int main() {
+    printf("Hello");  // Error: implicit declaration of printf
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Incorrect main() Signature}
+    \begin{lstlisting}[language=C]
+void main()  // Non-standard; should be int main()
+{
+    printf("Hello");
+}
+    \end{lstlisting}
+    
+    \item \textbf{Missing Return Statement}
+    \begin{lstlisting}[language=C]
+int main() {
+    printf("Hello");
+    // Warning: control reaches end of non-void function
+}
+    \end{lstlisting}
+\end{enumerate}
+\end{warningbox}
+
+\subsubsection{Real-World Use}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Operating Systems}: Linux kernel (15+ million lines of C code)
+    \item \textbf{Databases}: MySQL, PostgreSQL core engines
+    \item \textbf{Embedded Systems}: Microcontroller programming (Arduino, IoT devices)
+    \item \textbf{Compilers}: GCC itself is written in C
+    \item \textbf{Game Engines}: Performance-critical components
+\end{itemize}
+
+\subsubsection{Quick Revision Points}
+
+\begin{tipbox}{Key Takeaways}
+\begin{enumerate}[leftmargin=*]
+    \item C is a \textbf{procedural, compiled} language emphasizing efficiency
+    \item \textbf{main()} is the entry point; execution starts here
+    \item Compilation: \textbf{Preprocessing → Compiling → Assembling → Linking}
+    \item Every statement ends with \textbf{semicolon} (;)
+    \item \textbf{\#include <stdio.h>} provides standard I/O functions
+    \item \textbf{return 0;} indicates successful program termination
+    \item Comments: \texttt{//} (single-line) or \texttt{/* */} (multi-line)
+\end{enumerate}
+\end{tipbox}
+
+\newpage
+
+% ========================
+% TOPIC: FUNDAMENTALS OF SYNTAX
+% ========================
+\subsection{Fundamentals of Syntax}
+
+\subsubsection{Concept Overview}
+
+Programming syntax comprises the rules that define the structure of valid statements in a language. In C, syntax governs how we write keywords, identifiers, constants, and variables to communicate instructions to the compiler.
+
+\subsubsection{Why It Matters}
+
+Syntax is the grammar of programming. Just as incorrect grammar makes human language incomprehensible, syntax errors prevent code compilation. Mastering C syntax enables:
+
+\begin{itemize}[leftmargin=*]
+    \item Writing compilable, error-free code
+    \item Understanding compiler error messages
+    \item Reading and debugging existing code
+    \item Following professional coding standards
+\end{itemize}
+
+\subsubsection{Detailed Explanation}
+
+\textbf{1. Keywords (Reserved Words)}
+
+Keywords are predefined words with special meaning in C. They cannot be used as identifiers.
+
+\begin{conceptbox}{C Keywords (32 in ANSI C)}
+\begin{verbatim}
+auto        break       case        char        const       continue
+default     do          double      else        enum        extern
+float       for         goto        if          int         long
+register    return      short       signed      sizeof      static
+struct      switch      typedef     union       unsigned    void
+volatile    while
+\end{verbatim}
+\end{conceptbox}
+
+\textbf{2. Identifiers}
+
+Identifiers are names given to variables, functions, arrays, and other user-defined items.
+
+\textbf{Rules for Identifiers:}
+\begin{enumerate}[leftmargin=*]
+    \item Must begin with a letter (A-Z, a-z) or underscore (\_)
+    \item Subsequent characters can be letters, digits (0-9), or underscores
+    \item Cannot be a keyword
+    \item Case-sensitive (\texttt{count}, \texttt{Count}, \texttt{COUNT} are different)
+    \item No special characters allowed (@, \$, \%, etc.)
+    \item Length typically limited to 31 characters (compiler-dependent)
+\end{enumerate}
+
+\begin{examplebox}{Valid vs Invalid Identifiers}
+\begin{lstlisting}[language=C]
+/* VALID IDENTIFIERS */
+int age;
+float _temperature;
+char studentName;
+int count123;
+double PI_VALUE;
+
+/* INVALID IDENTIFIERS */
+int 2ndNumber;     // Cannot start with digit
+float my-value;    // Hyphen not allowed
+char first name;   // Space not allowed
+int int;           // 'int' is a keyword
+double @price;     // @ symbol not allowed
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{3. Constants}
+
+Constants are fixed values that cannot be altered during program execution.
+
+\textbf{Types of Constants:}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Integer Constants}: \texttt{10}, \texttt{-50}, \texttt{0xFF} (hexadecimal), \texttt{012} (octal)
+    \item \textbf{Floating-point Constants}: \texttt{3.14}, \texttt{-0.5}, \texttt{2.5e3} (scientific notation)
+    \item \textbf{Character Constants}: \texttt{'A'}, \texttt{'z'}, \texttt{'\textbackslash n'} (newline)
+    \item \textbf{String Constants}: \texttt{"Hello"}, \texttt{"C Programming"}
+\end{itemize}
+
+\begin{examplebox}{Constants Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    const int MAX_SIZE = 100;      // Named constant (cannot be changed)
+    const float PI = 3.14159;
+    
+    printf("Integer: %d\n", 42);
+    printf("Float: %f\n", 3.14);
+    printf("Character: %c\n", 'A');
+    printf("String: %s\n", "Hello World");
+    printf("Hexadecimal: %d\n", 0xFF);  // 255 in decimal
+    printf("Octal: %d\n", 010);         // 8 in decimal
+    
+    // MAX_SIZE = 200;  // Error: assignment of read-only variable
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{4. Variables}
+
+Variables are named storage locations that hold data which can be modified during program execution.
+
+\textbf{Variable Declaration Syntax:}
+\begin{verbatim}
+data_type variable_name;
+\end{verbatim}
+
+\textbf{Variable Initialization:}
+\begin{lstlisting}[language=C]
+int age;              // Declaration only
+age = 25;             // Assignment
+
+int count = 0;        // Declaration with initialization
+float pi = 3.14;      // Declaration with initialization
+
+int a = 5, b = 10, c; // Multiple declarations
+\end{lstlisting}
+
+\subsubsection{Data Types: Primitive Types}
+
+C provides several built-in data types to represent different kinds of data.
+
+\begin{conceptbox}{Primitive Data Types}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Type} & \textbf{Size} & \textbf{Range} & \textbf{Format} \\
+\hline
+char & 1 byte & -128 to 127 & \%c \\
+unsigned char & 1 byte & 0 to 255 & \%c \\
+int & 4 bytes & -2,147,483,648 to 2,147,483,647 & \%d \\
+unsigned int & 4 bytes & 0 to 4,294,967,295 & \%u \\
+short & 2 bytes & -32,768 to 32,767 & \%hd \\
+long & 8 bytes & -9,223,372,036,854,775,808 to ... & \%ld \\
+float & 4 bytes & 3.4E-38 to 3.4E+38 (6 decimal) & \%f \\
+double & 8 bytes & 1.7E-308 to 1.7E+308 (15 decimal) & \%lf \\
+void & 0 bytes & No value & N/A \\
+\hline
+\end{tabular}
+\end{conceptbox}
+
+\textit{Note: Sizes may vary based on compiler and platform (32-bit vs 64-bit)}
+
+\begin{examplebox}{Data Types Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    // Character type
+    char grade = 'A';
+    char newline = '\n';
+    
+    // Integer types
+    int age = 25;
+    unsigned int population = 1000000;
+    short temperature = -15;
+    long distance = 384400000L;  // L suffix for long
+    
+    // Floating-point types
+    float price = 99.99f;        // f suffix for float
+    double pi = 3.14159265359;
+    
+    // Display
+    printf("Character: %c\n", grade);
+    printf("Integer: %d\n", age);
+    printf("Unsigned: %u\n", population);
+    printf("Short: %hd\n", temperature);
+    printf("Long: %ld\n", distance);
+    printf("Float: %.2f\n", price);
+    printf("Double: %.10lf\n", pi);
+    
+    // Check sizes
+    printf("\nSize of int: %lu bytes\n", sizeof(int));
+    printf("Size of float: %lu bytes\n", sizeof(float));
+    printf("Size of double: %lu bytes\n", sizeof(double));
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{The void Type:}
+
+\texttt{void} indicates absence of type:
+\begin{itemize}[leftmargin=*]
+    \item Function returns no value: \texttt{void display();}
+    \item Function takes no parameters: \texttt{int main(void);}
+    \item Generic pointer: \texttt{void *ptr;}
+\end{itemize}
+
+\subsubsection{Input \& Output Functions}
+
+\textbf{printf() - Formatted Output}
+
+\texttt{printf()} displays output to the console.
+
+Syntax:
+\begin{lstlisting}[language=C]
+printf("format string", argument1, argument2, ...);
+\end{lstlisting}
+
+\begin{examplebox}{printf() Examples}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int num = 42;
+    float pi = 3.14159;
+    char letter = 'Z';
+    
+    // Basic output
+    printf("Hello, World!\n");
+    
+    // Formatted output
+    printf("Number: %d\n", num);
+    printf("Pi: %f\n", pi);
+    printf("Pi (2 decimals): %.2f\n", pi);
+    printf("Character: %c\n", letter);
+    
+    // Multiple values
+    printf("Num: %d, Pi: %.2f, Letter: %c\n", num, pi, letter);
+    
+    // Field width
+    printf("Number with width: %5d\n", num);     // Right-aligned
+    printf("Number left-aligned: %-5d\n", num);  // Left-aligned
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{Format Specifiers:}
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Specifier} & \textbf{Description} \\
+\hline
+\%d or \%i & Integer (signed) \\
+\%u & Unsigned integer \\
+\%f & Float/Double \\
+\%lf & Double (in scanf) \\
+\%c & Character \\
+\%s & String \\
+\%x & Hexadecimal (lowercase) \\
+\%X & Hexadecimal (uppercase) \\
+\%o & Octal \\
+\%p & Pointer address \\
+\%\% & Literal \% character \\
+\hline
+\end{tabular}
+
+\textbf{Escape Sequences:}
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Sequence} & \textbf{Meaning} \\
+\hline
+\textbackslash n & Newline \\
+\textbackslash t & Tab \\
+\textbackslash b & Backspace \\
+\textbackslash r & Carriage return \\
+\textbackslash\textbackslash & Backslash \\
+\textbackslash' & Single quote \\
+\textbackslash" & Double quote \\
+\textbackslash 0 & Null character \\
+\hline
+\end{tabular}
+
+\textbf{scanf() - Formatted Input}
+
+\texttt{scanf()} reads input from the user.
+
+Syntax:
+\begin{lstlisting}[language=C]
+scanf("format string", &variable1, &variable2, ...);
+\end{lstlisting}
+
+\textbf{Important:} The \texttt{\&} (address-of operator) is required for most variables (except arrays/strings).
+
+\begin{examplebox}{scanf() Examples}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int age;
+    float height;
+    char grade;
+    
+    // Input integer
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    
+    // Input float
+    printf("Enter your height (in meters): ");
+    scanf("%f", &height);
+    
+    // Input character
+    printf("Enter your grade: ");
+    scanf(" %c", &grade);  // Space before %c to skip whitespace
+    
+    // Display
+    printf("\nYour details:\n");
+    printf("Age: %d years\n", age);
+    printf("Height: %.2f meters\n", height);
+    printf("Grade: %c\n", grade);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}{Multiple Inputs}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+    
+    // Multiple inputs in one scanf
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+    
+    printf("You entered: %d, %d, %d\n", a, b, c);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{Output Explanation}
+
+When running a program with I/O:
+
+\begin{verbatim}
+Enter your age: 25
+Enter your height (in meters): 1.75
+Enter your grade: A
+
+Your details:
+Age: 25 years
+Height: 1.75 meters
+Grade: A
+\end{verbatim}
+
+\subsubsection{Common Errors}
+
+\begin{warningbox}{Syntax-Related Errors}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Missing \& in scanf}
+    \begin{lstlisting}[language=C]
+int num;
+scanf("%d", num);  // Wrong! Should be &num
+    \end{lstlisting}
+    
+    \item \textbf{Wrong Format Specifier}
+    \begin{lstlisting}[language=C]
+float value = 3.14;
+printf("%d", value);  // Wrong! Should be %f
+    \end{lstlisting}
+    
+    \item \textbf{Uninitialized Variable}
+    \begin{lstlisting}[language=C]
+int x;
+printf("%d", x);  // Undefined behavior - garbage value
+    \end{lstlisting}
+    
+    \item \textbf{Type Mismatch}
+    \begin{lstlisting}[language=C]
+int num = 3.14;  // Warning: implicit conversion loses precision
+    \end{lstlisting}
+    
+    \item \textbf{Incorrect Identifier}
+    \begin{lstlisting}[language=C]
+int my-variable;  // Error: invalid identifier
+    \end{lstlisting}
+\end{enumerate}
+\end{warningbox}
+
+\subsubsection{Real-World Use}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{User Interfaces}: CLI applications reading user input
+    \item \textbf{Data Processing}: Reading sensor data (temperature, pressure)
+    \item \textbf{Configuration Files}: Parsing structured input data
+    \item \textbf{Logging Systems}: Formatted output for debugging and monitoring
+\end{itemize}
+
+\subsubsection{Quick Revision Points}
+
+\begin{tipbox}{Syntax Fundamentals - Key Takeaways}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Keywords} are reserved; cannot be used as identifiers
+    \item \textbf{Identifiers} must start with letter/underscore, are case-sensitive
+    \item \textbf{Constants} are fixed values; use \texttt{const} keyword for named constants
+    \item \textbf{Variables} must be declared before use with specific data type
+    \item \textbf{int}: whole numbers, \textbf{float/double}: decimals, \textbf{char}: single character
+    \item \textbf{printf()}: output with format specifiers (\%d, \%f, \%c, \%s)
+    \item \textbf{scanf()}: input requires \& before variable name
+    \item Use \texttt{sizeof()} operator to check type sizes
+\end{enumerate}
+\end{tipbox}
+
+\newpage
+
+% ========================
+% TOPIC: OPERATORS
+% ========================
+\subsection{Operators in C}
+
+\subsubsection{Concept Overview}
+
+Operators are special symbols that perform operations on operands (variables, constants, or expressions). C provides a rich set of operators categorized by their functionality, enabling complex computations and logical decision-making.
+
+\subsubsection{Why It Matters}
+
+Operators are fundamental building blocks of any program:
+
+\begin{itemize}[leftmargin=*]
+    \item Perform mathematical calculations
+    \item Make logical decisions
+    \item Compare values
+    \item Manipulate data at bit level
+    \item Control program flow
+\end{itemize}
+
+\subsubsection{Detailed Explanation}
+
+\textbf{1. Arithmetic Operators}
+
+Perform basic mathematical operations.
+
+\begin{conceptbox}{Arithmetic Operators}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Operator} & \textbf{Description} & \textbf{Example} \\
+\hline
++ & Addition & a + b \\
+- & Subtraction & a - b \\
+* & Multiplication & a * b \\
+/ & Division & a / b \\
+\% & Modulus (remainder) & a \% b \\
+\hline
+\end{tabular}
+\end{conceptbox}
+
+\begin{examplebox}{Arithmetic Operators Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int a = 20, b = 7;
+    float x = 20.0, y = 7.0;
+    
+    printf("Integer Arithmetic:\n");
+    printf("%d + %d = %d\n", a, b, a + b);      // 27
+    printf("%d - %d = %d\n", a, b, a - b);      // 13
+    printf("%d * %d = %d\n", a, b, a * b);      // 140
+    printf("%d / %d = %d\n", a, b, a / b);      // 2 (integer division)
+    printf("%d %% %d = %d\n", a, b, a % b);     // 6 (remainder)
+    
+    printf("\nFloat Arithmetic:\n");
+    printf("%.1f / %.1f = %.2f\n", x, y, x / y);  // 2.86 (float division)
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{Important Notes:}
+\begin{itemize}[leftmargin=*]
+    \item Integer division truncates: \texttt{7 / 2 = 3}, not \texttt{3.5}
+    \item Modulus (\%) works only with integers
+    \item Division by zero causes runtime error (undefined behavior)
+\end{itemize}
+
+\textbf{2. Relational (Comparison) Operators}
+
+Compare two values and return 1 (true) or 0 (false).
+
+\begin{conceptbox}{Relational Operators}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Operator} & \textbf{Description} & \textbf{Example} \\
+\hline
+== & Equal to & a == b \\
+!= & Not equal to & a != b \\
+> & Greater than & a > b \\
+< & Less than & a < b \\
+>= & Greater than or equal & a >= b \\
+<= & Less than or equal & a <= b \\
+\hline
+\end{tabular}
+\end{conceptbox}
+
+\begin{examplebox}{Relational Operators Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 20;
+    
+    printf("a = %d, b = %d\n\n", a, b);
+    
+    printf("a == b : %d\n", a == b);  // 0 (false)
+    printf("a != b : %d\n", a != b);  // 1 (true)
+    printf("a > b  : %d\n", a > b);   // 0 (false)
+    printf("a < b  : %d\n", a < b);   // 1 (true)
+    printf("a >= b : %d\n", a >= b);  // 0 (false)
+    printf("a <= b : %d\n", a <= b);  // 1 (true)
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{3. Logical Operators}
+
+Combine multiple conditions; return 1 (true) or 0 (false).
+
+\begin{conceptbox}{Logical Operators}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Operator} & \textbf{Description} & \textbf{Example} \\
+\hline
+\&\& & Logical AND & (a > 5) \&\& (b < 10) \\
+|| & Logical OR & (a > 5) || (b < 10) \\
+! & Logical NOT & !(a > 5) \\
+\hline
+\end{tabular}
+\end{conceptbox}
+
+\textbf{Truth Tables:}
+
+\textbf{AND (\&\&):} True only if both conditions are true\\
+\textbf{OR (||):} True if at least one condition is true\\
+\textbf{NOT (!):} Reverses the boolean value
+
+\begin{examplebox}{Logical Operators Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int age = 25;
+    int hasLicense = 1;  // 1 = true, 0 = false
+    
+    // AND operator
+    if (age >= 18 && hasLicense) {
+        printf("Can drive.\n");
+    }
+    
+    // OR operator
+    int isWeekend = 0;
+    int isHoliday = 1;
+    if (isWeekend || isHoliday) {
+        printf("No work today!\n");
+    }
+    
+    // NOT operator
+    int isRaining = 0;
+    if (!isRaining) {
+        printf("Can go outside.\n");
+    }
+    
+    // Complex condition
+    int marks = 85;
+    if ((marks >= 80 && marks <= 100) || (marks == -1)) {
+        printf("Excellent or exempted!\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{4. Assignment Operators}
+
+Assign values to variables.
+
+\begin{conceptbox}{Assignment Operators}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Operator} & \textbf{Description} & \textbf{Equivalent} \\
+\hline
+= & Simple assignment & a = 5 \\
++= & Add and assign & a += 5 is a = a + 5 \\
+-= & Subtract and assign & a -= 5 is a = a - 5 \\
+*= & Multiply and assign & a *= 5 is a = a * 5 \\
+/= & Divide and assign & a /= 5 is a = a / 5 \\
+\%= & Modulus and assign & a \%= 5 is a = a \% 5 \\
+\hline
+\end{tabular}
+\end{conceptbox}
+
+\begin{examplebox}{Assignment Operators Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int x = 10;
+    
+    printf("Initial x = %d\n", x);
+    
+    x += 5;  // x = x + 5
+    printf("After x += 5: %d\n", x);   // 15
+    
+    x -= 3;  // x = x - 3
+    printf("After x -= 3: %d\n", x);   // 12
+    
+    x *= 2;  // x = x * 2
+    printf("After x *= 2: %d\n", x);   // 24
+    
+    x /= 4;  // x = x / 4
+    printf("After x /= 4: %d\n", x);   // 6
+    
+    x %= 4;  // x = x % 4
+    printf("After x %%= 4: %d\n", x);  // 2
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{5. Increment/Decrement Operators}
+
+Increase or decrease variable value by 1.
+
+\begin{conceptbox}{Increment/Decrement Operators}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Operator} & \textbf{Description} & \textbf{Example} \\
+\hline
+++ & Increment by 1 & ++a (pre) or a++ (post) \\
+-- & Decrement by 1 & --a (pre) or a-- (post) \\
+\hline
+\end{tabular}
+\end{conceptbox}
+
+\textbf{Pre-increment vs Post-increment:}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Pre-increment (++a)}: Increment first, then use value
+    \item \textbf{Post-increment (a++)}: Use value first, then increment
+\end{itemize}
+
+\begin{examplebox}{Increment/Decrement Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int a = 5, b = 5;
+    
+    printf("Initial: a = %d, b = %d\n", a, b);
+    
+    // Post-increment
+    printf("a++ = %d\n", a++);  // Prints 5, then a becomes 6
+    printf("After a++, a = %d\n", a);
+    
+    // Pre-increment
+    printf("++b = %d\n", ++b);  // b becomes 6, then prints 6
+    printf("After ++b, b = %d\n", b);
+    
+    int x = 10;
+    int y = x++;  // y gets 10, x becomes 11
+    printf("\nx = %d, y = %d\n", x, y);
+    
+    int p = 10;
+    int q = ++p;  // p becomes 11, q gets 11
+    printf("p = %d, q = %d\n", p, q);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{6. Bitwise Operators (Introduction)}
+
+Operate on individual bits of integers.
+
+\begin{conceptbox}{Bitwise Operators}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{Operator} & \textbf{Description} \\
+\hline
+\& & Bitwise AND \\
+| & Bitwise OR \\
+\^{} & Bitwise XOR \\
+\~{} & Bitwise NOT (complement) \\
+<< & Left shift \\
+>> & Right shift \\
+\hline
+\end{tabular}
+\end{conceptbox}
+
+\textit{Note: Detailed bitwise operations will be covered in Advanced Topics}
+
+\begin{examplebox}{Basic Bitwise Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int a = 5;   // Binary: 0101
+    int b = 3;   // Binary: 0011
+    
+    printf("a & b = %d\n", a & b);   // 0001 = 1
+    printf("a | b = %d\n", a | b);   // 0111 = 7
+    printf("a ^ b = %d\n", a ^ b);   // 0110 = 6
+    printf("~a = %d\n", ~a);         // Inverts all bits
+    
+    printf("a << 1 = %d\n", a << 1); // 1010 = 10 (multiply by 2)
+    printf("a >> 1 = %d\n", a >> 1); // 0010 = 2 (divide by 2)
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{Expressions \& Operator Precedence}
+
+\textbf{Expression:} Combination of operators and operands that evaluates to a value.
+
+Example: \texttt{result = (a + b) * c - d / e;}
+
+\textbf{Operator Precedence} determines the order of evaluation when multiple operators are present.
+
+\begin{conceptbox}{Operator Precedence (High to Low)}
+\begin{enumerate}[leftmargin=*]
+    \item Parentheses: \texttt{( )}
+    \item Unary: \texttt{++, --, !, \~{}, +, -, *,  \&} (right-to-left)
+    \item Multiplicative: \texttt{*, /, \%}
+    \item Additive: \texttt{+, -}
+    \item Shift: \texttt{<<, >>}
+    \item Relational: \texttt{<, <=, >, >=}
+    \item Equality: \texttt{==, !=}
+    \item Bitwise AND: \texttt{\&}
+    \item Bitwise XOR: \texttt{\^{}}
+    \item Bitwise OR: \texttt{|}
+    \item Logical AND: \texttt{\&\&}
+    \item Logical OR: \texttt{||}
+    \item Assignment: \texttt{=, +=, -=, *=, /=, \%=} (right-to-left)
+\end{enumerate}
+\end{conceptbox}
+
+\begin{examplebox}{Precedence Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int result;
+    
+    // Without parentheses
+    result = 5 + 3 * 2;
+    printf("5 + 3 * 2 = %d\n", result);  // 11 (not 16)
+    
+    // With parentheses
+    result = (5 + 3) * 2;
+    printf("(5 + 3) * 2 = %d\n", result);  // 16
+    
+    // Complex expression
+    result = 10 + 5 * 2 - 8 / 4;
+    printf("10 + 5 * 2 - 8 / 4 = %d\n", result);  // 18
+    // Step: 10 + 10 - 2 = 18
+    
+    // Using parentheses for clarity
+    result = (10 + (5 * 2)) - (8 / 4);
+    printf("Same with parentheses: %d\n", result);  // 18
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{Associativity:}
+
+When operators have the same precedence, associativity determines evaluation order:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Left-to-right}: Most operators (\texttt{+, -, *, /, \%})
+    \item \textbf{Right-to-left}: Assignment (\texttt{=}), unary operators (\texttt{++, --})
+\end{itemize}
+
+\begin{lstlisting}[language=C]
+int a = 5, b = 10, c = 15;
+a = b = c;  // Right-to-left: a = (b = c), so a and b both get 15
+\end{lstlisting}
+
+\subsubsection{Syntax \& Rules Summary}
+
+\begin{conceptbox}{Operator Syntax Rules}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Binary operators} require two operands: \texttt{a + b}
+    \item \textbf{Unary operators} require one operand: \texttt{-a}, \texttt{++x}
+    \item \textbf{Ternary operator} (conditional): \texttt{condition ? expr1 : expr2}
+    \item Use parentheses to override precedence and improve readability
+    \item Space around operators improves code clarity (style guideline)
+\end{itemize}
+\end{conceptbox}
+
+\subsubsection{Code Examples - Practical Applications}
+
+\begin{examplebox}{Simple Calculator}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    float num1, num2, result;
+    char operator;
+    
+    printf("Enter first number: ");
+    scanf("%f", &num1);
+    
+    printf("Enter operator (+, -, *, /): ");
+    scanf(" %c", &operator);
+    
+    printf("Enter second number: ");
+    scanf("%f", &num2);
+    
+    switch(operator) {
+        case '+':
+            result = num1 + num2;
+            printf("%.2f + %.2f = %.2f\n", num1, num2, result);
+            break;
+        case '-':
+            result = num1 - num2;
+            printf("%.2f - %.2f = %.2f\n", num1, num2, result);
+            break;
+        case '*':
+            result = num1 * num2;
+            printf("%.2f * %.2f = %.2f\n", num1, num2, result);
+            break;
+        case '/':
+            if (num2 != 0) {
+                result = num1 / num2;
+                printf("%.2f / %.2f = %.2f\n", num1, num2, result);
+            } else {
+                printf("Error: Division by zero!\n");
+            }
+            break;
+        default:
+            printf("Invalid operator!\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}{Temperature Conversion}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    float celsius, fahrenheit;
+    
+    printf("Enter temperature in Celsius: ");
+    scanf("%f", &celsius);
+    
+    // Formula: F = (C * 9/5) + 32
+    fahrenheit = (celsius * 9.0 / 5.0) + 32.0;
+    
+    printf("%.2f°C = %.2f°F\n", celsius, fahrenheit);
+    
+    // Reverse: Fahrenheit to Celsius
+    printf("\nEnter temperature in Fahrenheit: ");
+    scanf("%f", &fahrenheit);
+    
+    // Formula: C = (F - 32) * 5/9
+    celsius = (fahrenheit - 32.0) * 5.0 / 9.0;
+    
+    printf("%.2f°F = %.2f°C\n", fahrenheit, celsius);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{Output Explanation}
+
+\textbf{Calculator Output:}
+\begin{verbatim}
+Enter first number: 15
+Enter operator (+, -, *, /): *
+Enter second number: 4
+15.00 * 4.00 = 60.00
+\end{verbatim}
+
+\textbf{Temperature Conversion Output:}
+\begin{verbatim}
+Enter temperature in Celsius: 25
+25.00°C = 77.00°F
+
+Enter temperature in Fahrenheit: 98.6
+98.60°F = 37.00°C
+\end{verbatim}
+
+\subsubsection{Common Errors}
+
+\begin{warningbox}{Operator-Related Mistakes}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Assignment vs Comparison}
+    \begin{lstlisting}[language=C]
+if (x = 5)  // Wrong! This assigns 5 to x, always true
+if (x == 5) // Correct! Compares x with 5
+    \end{lstlisting}
+    
+    \item \textbf{Integer Division}
+    \begin{lstlisting}[language=C]
+int result = 7 / 2;  // result = 3, not 3.5
+float result = 7 / 2;  // Still 3.0! Both operands are int
+float result = 7.0 / 2;  // Correct: 3.5
+    \end{lstlisting}
+    
+    \item \textbf{Modulus with Float}
+    \begin{lstlisting}[language=C]
+float x = 5.5 % 2.0;  // Error! Modulus only works with integers
+    \end{lstlisting}
+    
+    \item \textbf{Incorrect Precedence Assumption}
+    \begin{lstlisting}[language=C]
+int x = 10 + 5 * 2;  // x = 20, not 30
+// Use parentheses: (10 + 5) * 2 for 30
+    \end{lstlisting}
+    
+    \item \textbf{Post/Pre Increment Confusion}
+    \begin{lstlisting}[language=C]
+int x = 5;
+int y = x++;  // y = 5, x = 6 (use then increment)
+int z = ++x;  // z = 7, x = 7 (increment then use)
+    \end{lstlisting}
+\end{enumerate}
+\end{warningbox}
+
+\subsubsection{Real-World Use}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Financial Calculations}: Interest computation, tax calculation
+    \item \textbf{Scientific Computing}: Formula evaluation, unit conversions
+    \item \textbf{Game Development}: Score calculation, collision detection
+    \item \textbf{Embedded Systems}: Sensor data processing, bitwise flag manipulation
+    \item \textbf{Database Queries}: Conditional filtering, data transformation
+\end{itemize}
+
+\subsubsection{Quick Revision Points}
+
+\begin{tipbox}{Operators - Key Takeaways}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Arithmetic}: +, -, *, /, \% (modulus for integers only)
+    \item \textbf{Relational}: ==, !=, <, >, <=, >= (return 0 or 1)
+    \item \textbf{Logical}: \&\& (AND), || (OR), ! (NOT)
+    \item \textbf{Assignment}: =, +=, -=, *=, /=, \%=
+    \item \textbf{Increment/Decrement}: ++ (add 1), -- (subtract 1)
+    \item \textbf{Pre-increment (++x)}: Increment first, then use
+    \item \textbf{Post-increment (x++)}: Use first, then increment
+    \item \textbf{Integer division truncates}: 7 / 2 = 3
+    \item \textbf{Precedence}: * / \% before + -, use () for clarity
+    \item \textbf{Avoid}: x = 5 in conditions (use x == 5)
+\end{enumerate}
+\end{tipbox}
+
+\newpage
+
+% ========================
+% MODULE SUMMARY AND PRACTICE
+% ========================
+\section*{Module 1 Summary}
+\addcontentsline{toc}{section}{Module 1 Summary}
+
+\begin{conceptbox}{Module 1 Overview: Basics of C Programming}
+This foundational module established the essential building blocks of C programming:
+
+\vspace{0.5cm}
+
+\textbf{1. Introduction to C \& Programming Concepts}
+\begin{itemize}[leftmargin=*]
+    \item C: Procedural, compiled, efficient, portable language
+    \item Structure: Header, main(), function body
+    \item Compilation: Preprocessing → Compiling → Assembling → Linking
+    \item IDEs: Code::Blocks, Dev-C++, VS Code, GCC compiler
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{2. Fundamentals of Syntax}
+\begin{itemize}[leftmargin=*]
+    \item Keywords: 32 reserved words (int, float, if, while, etc.)
+    \item Identifiers: User-defined names following specific rules
+    \item Constants: Fixed values (integer, float, character, string)
+    \item Variables: Named storage locations with data types
+    \item Data types: char, int, float, double, void
+    \item I/O: printf() with format specifiers, scanf() with \& operator
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{3. Operators in C}
+\begin{itemize}[leftmargin=*]
+    \item Arithmetic: +, -, *, /, \%
+    \item Relational: ==, !=, <, >, <=, >=
+    \item Logical: \&\&, ||, !
+    \item Assignment: =, +=, -=, *=, /=, \%=
+    \item Increment/Decrement: ++, --
+    \item Bitwise: \&, |, \^{}, \~{}, <<, >>
+    \item Precedence and associativity rules
+\end{itemize}
+\end{conceptbox}
+
+\vspace{0.5cm}
+
+\begin{tipbox}{Expected Outcomes - Can You:}
+\begin{enumerate}[leftmargin=*]
+    \item Explain the compilation process and its four stages?
+    \item Write, compile, and execute basic C programs?
+    \item Declare variables with appropriate data types?
+    \item Use printf() and scanf() for I/O operations correctly?
+    \item Apply arithmetic, relational, and logical operators?
+    \item Understand operator precedence and use parentheses appropriately?
+    \item Debug common syntax errors?
+\end{enumerate}
+\end{tipbox}
+
+\newpage
+
+\section*{Practice Questions}
+\addcontentsline{toc}{section}{Practice Questions}
+
+\subsection*{Multiple Choice Questions}
+
+\begin{enumerate}[leftmargin=*]
+    \item Which of the following is NOT a valid C identifier?
+    \begin{enumerate}[label=(\alph*)]
+        \item \texttt{student\_name}
+        \item \texttt{\_value}
+        \item \texttt{2ndNumber}
+        \item \texttt{count123}
+    \end{enumerate}
+    
+    \item What is the output of: \texttt{printf("\%d", 7 / 2);}?
+    \begin{enumerate}[label=(\alph*)]
+        \item 3.5
+        \item 3
+        \item 4
+        \item Error
+    \end{enumerate}
+    
+    \item Which operator has the highest precedence?
+    \begin{enumerate}[label=(\alph*)]
+        \item +
+        \item *
+        \item ()
+        \item ==
+    \end{enumerate}
+    
+    \item What is the size of \texttt{int} on a 32-bit system?
+    \begin{enumerate}[label=(\alph*)]
+        \item 2 bytes
+        \item 4 bytes
+        \item 8 bytes
+        \item Depends on compiler
+    \end{enumerate}
+    
+    \item Which stage comes first in compilation?
+    \begin{enumerate}[label=(\alph*)]
+        \item Assembly
+        \item Preprocessing
+        \item Linking
+        \item Compilation
+    \end{enumerate}
+    
+    \item What does the following print: \texttt{int x = 5; printf("\%d", x++);}?
+    \begin{enumerate}[label=(\alph*)]
+        \item 5
+        \item 6
+        \item 4
+        \item Undefined
+    \end{enumerate}
+    
+    \item Which is the correct format specifier for double in scanf?
+    \begin{enumerate}[label=(\alph*)]
+        \item \%f
+        \item \%d
+        \item \%lf
+        \item \%ld
+    \end{enumerate}
+    
+    \item What is the result of: \texttt{10 \% 3}?
+    \begin{enumerate}[label=(\alph*)]
+        \item 3
+        \item 1
+        \item 0
+        \item 3.33
+    \end{enumerate}
+\end{enumerate}
+
+\subsection*{True/False Questions}
+
+\begin{enumerate}[leftmargin=*, resume]
+    \item C is an interpreted language. \textbf{(True/False)}
+    \item The modulus operator works with floating-point numbers. \textbf{(True/False)}
+    \item \texttt{printf()} requires the address-of operator (\&). \textbf{(True/False)}
+    \item Keywords can be used as variable names. \textbf{(True/False)}
+    \item Post-increment returns the value before incrementing. \textbf{(True/False)}
+    \item Integer division in C always returns a float. \textbf{(True/False)}
+\end{enumerate}
+
+\subsection*{Fill in the Blanks}
+
+\begin{enumerate}[leftmargin=*, resume]
+    \item The four stages of compilation are \_\_\_\_\_\_, \_\_\_\_\_\_, \_\_\_\_\_\_, and \_\_\_\_\_\_.
+    \item The operator \texttt{\_\_\_\_\_\_} is used to find the remainder of division.
+    \item In C, \_\_\_\_\_\_ are fixed values that cannot be changed during execution.
+    \item The \texttt{\_\_\_\_\_\_} function is used to read input from the user.
+    \item The escape sequence for newline is \_\_\_\_\_\_.
+\end{enumerate}
+
+\newpage
+
+\subsection*{Mini Exercises}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Hello World Variations}
+    \begin{lstlisting}[language=C]
+// Write a program that prints:
+// Hello, World!
+// Welcome to C Programming
+// Author: [Your Name]
+    \end{lstlisting}
+    
+    \item \textbf{Variable Declaration and I/O}
+    \begin{lstlisting}[language=C]
+// Declare variables for: name (string), age (int), height (float)
+// Read values from user
+// Display them in a formatted manner
+    \end{lstlisting}
+    
+    \item \textbf{Arithmetic Operations}
+    \begin{lstlisting}[language=C]
+// Read two integers from user
+// Display their sum, difference, product, quotient, and remainder
+    \end{lstlisting}
+    
+    \item \textbf{Area and Perimeter of Rectangle}
+    \begin{lstlisting}[language=C]
+// Input: length and breadth
+// Calculate and display area and perimeter
+// Area = length * breadth
+// Perimeter = 2 * (length + breadth)
+    \end{lstlisting}
+    
+    \item \textbf{Temperature Conversion}
+    \begin{lstlisting}[language=C]
+// Input: Temperature in Celsius
+// Convert to Fahrenheit and Kelvin
+// F = (C * 9/5) + 32
+// K = C + 273.15
+    \end{lstlisting}
+    
+    \item \textbf{Simple Interest Calculator}
+    \begin{lstlisting}[language=C]
+// Input: Principal, Rate, Time
+// Calculate Simple Interest: (P * R * T) / 100
+// Display Principal, Interest, and Total Amount
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection*{Interview-Style Questions}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Explain the compilation process in C.} Describe each of the four stages and what happens in each stage.
+    
+    \item \textbf{What is the difference between \texttt{int main()} and \texttt{void main()}?} Which one should be used and why?
+    
+    \item \textbf{Why do we need \& in scanf but not in printf?} Explain with an example.
+    
+    \item \textbf{What is the difference between \texttt{++i} and \texttt{i++}?} Provide code examples demonstrating the difference.
+    
+    \item \textbf{Predict the output:}
+    \begin{lstlisting}[language=C]
+int a = 10, b = 20, c;
+c = a > b ? a : b;
+printf("%d", c);
+    \end{lstlisting}
+    
+    \item \textbf{What happens if you divide by zero in C?} Explain for both integer and floating-point division.
+    
+    \item \textbf{Why is \texttt{7 / 2} equal to 3 and not 3.5?} How would you get 3.5 as the result?
+    
+    \item \textbf{What is the purpose of the return statement in main()?} What does \texttt{return 0;} signify?
+    
+    \item \textbf{Explain operator precedence.} Give an example where precedence affects the result.
+    
+    \item \textbf{Write a program to swap two numbers without using a third variable.} Use only arithmetic operators.
+\end{enumerate}
+
+\vspace{1cm}
+
+\begin{tipbox}{Practice Tips}
+\begin{itemize}[leftmargin=*]
+    \item Compile and run every program yourself
+    \item Experiment by modifying code and observing changes
+    \item Use \texttt{printf()} to debug and understand program flow
+    \item Try intentional errors to understand error messages
+    \item Practice without IDE auto-completion to memorize syntax
+    \item Read compiler error messages carefully—they guide you to mistakes
+\end{itemize}
+\end{tipbox}
+
+\vspace{2cm}
+
+\begin{center}
+\textit{End of Module 1: Basics of C Programming}\\
+\vspace{0.5cm}
+\textbf{Next Module: Control Flow \& Decision Making}
+\end{center}
+
+% ========================
+% LEVEL II: CORE CONCEPTS - MODULE 2
+% ========================
+
+\chapter{Level II: CORE CONCEPTS}
+\section*{Mastering Logic, Structure, and Memory Management}
+\addcontentsline{toc}{section}{Mastering Logic, Structure, and Memory Management}
+
+\begin{conceptbox}{Chapter Overview}
+This level focuses on controlling program flow through conditional statements and loops, building modular programs with functions, and managing complex data through arrays, strings, and pointers. These concepts form the core of practical programming.
+\end{conceptbox}
+
+% ========================
+% MODULE 2: CONTROL FLOW
+% ========================
+\section{Module 2: Control Flow \& Decision Making}
+
+\begin{tipbox}{Module Duration \& Objectives}
+\textbf{Duration:} 12 Hours\\[0.3cm]
+\textbf{Learning Objectives:}
+\begin{itemize}[leftmargin=*]
+    \item Develop logical thinking capabilities
+    \item Control the flow of program execution based on conditions
+    \item Implement iterative logic using loops
+\end{itemize}
+\end{tipbox}
+
+% ========================
+% CONDITIONAL STATEMENTS
+% ========================
+\subsection{Conditional Statements}
+
+\subsubsection{Concept Overview}
+
+Conditional statements enable programs to make decisions and execute different code paths based on conditions. They are fundamental to creating intelligent, responsive programs that can handle different scenarios.
+
+\begin{conceptbox}{Core Definition}
+Conditional statements evaluate boolean expressions (conditions that are true or false) and execute specific code blocks based on the evaluation result. They implement the "if-then-else" logic fundamental to computational thinking.
+\end{conceptbox}
+
+\subsubsection{Why It Matters}
+
+Decision-making is essential in programming:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{User Input Validation}: Check if entered data is valid
+    \item \textbf{Business Logic}: Implement rules (discounts, eligibility, access control)
+    \item \textbf{Error Handling}: Detect and respond to errors
+    \item \textbf{Algorithm Design}: Implement sorting, searching, and optimization algorithms
+    \item \textbf{Real-World Modeling}: Simulate decision-making processes
+\end{enumerate}
+
+\subsubsection{Detailed Explanation}
+
+\textbf{1. Simple if Statement}
+
+Executes code block only if condition is true.
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+if (condition) {
+    // statements executed if condition is true
+}
+\end{lstlisting}
+
+\begin{examplebox}{Simple if Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int age;
+    
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    
+    if (age >= 18) {
+        printf("You are eligible to vote.\n");
+    }
+    
+    printf("Program ends.\n");
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output (age = 20):}
+\begin{verbatim}
+Enter your age: 20
+You are eligible to vote.
+Program ends.
+\end{verbatim}
+
+\textbf{Output (age = 15):}
+\begin{verbatim}
+Enter your age: 15
+Program ends.
+\end{verbatim}
+\end{examplebox}
+
+\textbf{2. if-else Statement}
+
+Provides two alternative paths: one for true, one for false.
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+if (condition) {
+    // statements if condition is true
+} else {
+    // statements if condition is false
+}
+\end{lstlisting}
+
+\begin{examplebox}{if-else Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int number;
+    
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    
+    if (number % 2 == 0) {
+        printf("%d is EVEN.\n", number);
+    } else {
+        printf("%d is ODD.\n", number);
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Enter a number: 7
+7 is ODD.
+\end{verbatim}
+\end{examplebox}
+
+\textbf{3. Nested if Statements}
+
+if statements inside other if statements for complex decision trees.
+
+\begin{examplebox}{Nested if Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int age;
+    char hasLicense;
+    
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    
+    if (age >= 18) {
+        printf("Do you have a driving license? (y/n): ");
+        scanf(" %c", &hasLicense);
+        
+        if (hasLicense == 'y' || hasLicense == 'Y') {
+            printf("You can drive a car.\n");
+        } else {
+            printf("You need a license to drive.\n");
+        }
+    } else {
+        printf("You are too young to drive.\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{4. else-if Ladder}
+
+Tests multiple conditions sequentially.
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+if (condition1) {
+    // code for condition1
+} else if (condition2) {
+    // code for condition2
+} else if (condition3) {
+    // code for condition3
+} else {
+    // code if none of the above
+}
+\end{lstlisting}
+
+\begin{examplebox}{else-if Ladder Example: Grade Calculator}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int marks;
+    
+    printf("Enter your marks (0-100): ");
+    scanf("%d", &marks);
+    
+    if (marks >= 90) {
+        printf("Grade: A+ (Excellent!)\n");
+    } else if (marks >= 80) {
+        printf("Grade: A (Very Good)\n");
+    } else if (marks >= 70) {
+        printf("Grade: B (Good)\n");
+    } else if (marks >= 60) {
+        printf("Grade: C (Average)\n");
+    } else if (marks >= 50) {
+        printf("Grade: D (Pass)\n");
+    } else {
+        printf("Grade: F (Fail)\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Enter your marks (0-100): 85
+Grade: A (Very Good)
+\end{verbatim}
+\end{examplebox}
+
+\textbf{5. switch-case Statement}
+
+Efficient multi-way selection based on a single variable's value.
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+switch (expression) {
+    case constant1:
+        // statements
+        break;
+    case constant2:
+        // statements
+        break;
+    default:
+        // statements if no case matches
+}
+\end{lstlisting}
+
+\begin{examplebox}{switch-case Example: Menu-Driven Calculator}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int choice;
+    float num1, num2, result;
+    
+    printf("=== CALCULATOR MENU ===\n");
+    printf("1. Addition\n");
+    printf("2. Subtraction\n");
+    printf("3. Multiplication\n");
+    printf("4. Division\n");
+    printf("Enter your choice (1-4): ");
+    scanf("%d", &choice);
+    
+    printf("Enter two numbers: ");
+    scanf("%f %f", &num1, &num2);
+    
+    switch (choice) {
+        case 1:
+            result = num1 + num2;
+            printf("%.2f + %.2f = %.2f\n", num1, num2, result);
+            break;
+        
+        case 2:
+            result = num1 - num2;
+            printf("%.2f - %.2f = %.2f\n", num1, num2, result);
+            break;
+        
+        case 3:
+            result = num1 * num2;
+            printf("%.2f * %.2f = %.2f\n", num1, num2, result);
+            break;
+        
+        case 4:
+            if (num2 != 0) {
+                result = num1 / num2;
+                printf("%.2f / %.2f = %.2f\n", num1, num2, result);
+            } else {
+                printf("Error: Division by zero!\n");
+            }
+            break;
+        
+        default:
+            printf("Invalid choice!\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{Important Notes about switch:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{break} is crucial; without it, execution "falls through" to next case
+    \item Expression must evaluate to integer or character
+    \item Cannot use ranges or relational operators in cases
+    \item \textbf{default} is optional but recommended
+\end{itemize}
+
+\begin{examplebox}{Fall-through Behavior}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int day = 3;
+    
+    printf("Day %d is: ", day);
+    
+    switch (day) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            printf("Weekday\n");
+            break;
+        case 6:
+        case 7:
+            printf("Weekend\n");
+            break;
+        default:
+            printf("Invalid day\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Day 3 is: Weekday
+\end{verbatim}
+\end{examplebox}
+
+\subsubsection{Common Errors}
+
+\begin{warningbox}{Conditional Statement Pitfalls}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Using = instead of ==}
+    \begin{lstlisting}[language=C]
+if (x = 5)  // Wrong! Assigns 5 to x, always true
+if (x == 5) // Correct! Compares x with 5
+    \end{lstlisting}
+    
+    \item \textbf{Missing braces in nested if}
+    \begin{lstlisting}[language=C]
+// Dangling else problem
+if (x > 0)
+    if (y > 0)
+        printf("Both positive");
+else  // Associates with inner if, not outer!
+    printf("X is not positive");
+    
+// Use braces for clarity
+if (x > 0) {
+    if (y > 0) {
+        printf("Both positive");
+    }
+} else {
+    printf("X is not positive");
+}
+    \end{lstlisting}
+    
+    \item \textbf{Forgetting break in switch}
+    \begin{lstlisting}[language=C]
+switch (choice) {
+    case 1:
+        printf("Option 1");
+        // Missing break! Falls through to case 2
+    case 2:
+        printf("Option 2");
+        break;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Incorrect logical operators}
+    \begin{lstlisting}[language=C]
+// Wrong: checking if x is between 10 and 20
+if (10 < x < 20)  // Always true! Evaluates as (10 < x) < 20
+
+// Correct
+if (x > 10 && x < 20)
+    \end{lstlisting}
+\end{enumerate}
+\end{warningbox}
+
+\subsubsection{Real-World Applications}
+
+\begin{examplebox}{Practical Application: Password Validator}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char password[20];
+    int length;
+    
+    printf("Enter password: ");
+    scanf("%s", password);
+    
+    length = strlen(password);
+    
+    if (length < 6) {
+        printf("Password too short! Minimum 6 characters.\n");
+    } else if (length > 15) {
+        printf("Password too long! Maximum 15 characters.\n");
+    } else {
+        printf("Password accepted.\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{Quick Revision Points}
+
+\begin{tipbox}{Conditional Statements - Key Takeaways}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{if}: Executes block only if condition is true
+    \item \textbf{if-else}: Two paths - one for true, one for false
+    \item \textbf{Nested if}: if inside if for complex decisions
+    \item \textbf{else-if ladder}: Multiple sequential conditions
+    \item \textbf{switch-case}: Multi-way selection for discrete values
+    \item \textbf{break}: Exits switch case (prevents fall-through)
+    \item \textbf{Use ==} for comparison, NOT =
+    \item \textbf{Braces \{\}} recommended even for single statements
+\end{enumerate}
+\end{tipbox}
+
+\newpage
+
+% ========================
+% LOOPING STATEMENTS
+% ========================
+\subsection{Looping Statements}
+
+\subsubsection{Concept Overview}
+
+Loops enable repetitive execution of code blocks, eliminating the need to write the same code multiple times. They are fundamental to processing collections of data and implementing algorithms.
+
+\begin{conceptbox}{Core Definition}
+A loop is a control structure that repeats a block of code as long as a specified condition remains true. Loops automate repetitive tasks, making programs efficient and concise.
+\end{conceptbox}
+
+\subsubsection{Why It Matters}
+
+Loops are essential for:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Data Processing}: Iterate through arrays, files, databases
+    \item \textbf{User Interaction}: Repeat menus until exit condition
+    \item \textbf{Mathematical Computation}: Calculate series, factorials, powers
+    \item \textbf{Algorithm Implementation}: Sorting, searching, pattern generation
+    \item \textbf{Game Development}: Game loops, animation frames
+\end{enumerate}
+
+\subsubsection{Detailed Explanation}
+
+\textbf{Types of Loops in C:}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Entry-Controlled}: Condition checked before execution (for, while)
+    \item \textbf{Exit-Controlled}: Condition checked after execution (do-while)
+\end{enumerate}
+
+\textbf{1. for Loop}
+
+Best when number of iterations is known in advance.
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+for (initialization; condition; increment/decrement) {
+    // loop body
+}
+\end{lstlisting}
+
+\textbf{Execution Flow:}
+\begin{enumerate}[leftmargin=*]
+    \item Initialization (executed once)
+    \item Condition check (if false, exit loop)
+    \item Execute loop body
+    \item Increment/decrement
+    \item Repeat from step 2
+\end{enumerate}
+
+\begin{examplebox}{for Loop Examples}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int i;
+    
+    // Print numbers 1 to 10
+    printf("Numbers 1 to 10:\n");
+    for (i = 1; i <= 10; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    
+    // Print even numbers from 2 to 20
+    printf("\nEven numbers 2 to 20:\n");
+    for (i = 2; i <= 20; i += 2) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    
+    // Countdown from 10 to 1
+    printf("\nCountdown:\n");
+    for (i = 10; i >= 1; i--) {
+        printf("%d ", i);
+    }
+    printf("\nBlast off!\n");
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Numbers 1 to 10:
+1 2 3 4 5 6 7 8 9 10 
+
+Even numbers 2 to 20:
+2 4 6 8 10 12 14 16 18 20 
+
+Countdown:
+10 9 8 7 6 5 4 3 2 1 
+Blast off!
+\end{verbatim}
+\end{examplebox}
+
+\begin{examplebox}{Practical: Sum of First N Numbers}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int n, i, sum = 0;
+    
+    printf("Enter N: ");
+    scanf("%d", &n);
+    
+    for (i = 1; i <= n; i++) {
+        sum += i;  // sum = sum + i
+    }
+    
+    printf("Sum of first %d numbers = %d\n", n, sum);
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output (N = 10):}
+\begin{verbatim}
+Enter N: 10
+Sum of first 10 numbers = 55
+\end{verbatim}
+\end{examplebox}
+
+\textbf{2. while Loop}
+
+Best when number of iterations is unknown; depends on runtime condition.
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+while (condition) {
+    // loop body
+    // update condition variable
+}
+\end{lstlisting}
+
+\begin{examplebox}{while Loop Examples}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int count = 1;
+    
+    // Print 1 to 5
+    while (count <= 5) {
+        printf("%d ", count);
+        count++;
+    }
+    printf("\n");
+    
+    // Factorial calculation
+    int n = 5, factorial = 1, i = 1;
+    
+    while (i <= n) {
+        factorial *= i;
+        i++;
+    }
+    
+    printf("Factorial of %d = %d\n", n, factorial);
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+1 2 3 4 5 
+Factorial of 5 = 120
+\end{verbatim}
+\end{examplebox}
+
+\begin{examplebox}{Practical: Input Validation}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int number;
+    
+    printf("Enter a positive number: ");
+    scanf("%d", &number);
+    
+    // Keep asking until valid input
+    while (number <= 0) {
+        printf("Invalid! Enter a POSITIVE number: ");
+        scanf("%d", &number);
+    }
+    
+    printf("You entered: %d\n", number);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{3. do-while Loop}
+
+Executes at least once, then checks condition (exit-controlled).
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+do {
+    // loop body (executes at least once)
+} while (condition);
+\end{lstlisting}
+
+\begin{examplebox}{do-while Loop Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int choice;
+    
+    do {
+        printf("\n=== MENU ===\n");
+        printf("1. Option 1\n");
+        printf("2. Option 2\n");
+        printf("3. Option 3\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+        
+        switch(choice) {
+            case 1:
+                printf("You selected Option 1\n");
+                break;
+            case 2:
+                printf("You selected Option 2\n");
+                break;
+            case 3:
+                printf("You selected Option 3\n");
+                break;
+            case 0:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice!\n");
+        }
+    } while (choice != 0);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{Difference: while vs do-while}
+
+\begin{lstlisting}[language=C]
+// while loop - may not execute at all
+int x = 10;
+while (x < 5) {
+    printf("This will NOT print\n");
+}
+
+// do-while loop - executes at least once
+int y = 10;
+do {
+    printf("This WILL print once\n");
+} while (y < 5);
+\end{lstlisting}
+
+\textbf{Nested Loops}
+
+Loops inside loops, useful for multi-dimensional processing.
+
+\begin{examplebox}{Nested Loops: Multiplication Table}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    
+    printf("Multiplication Table (1-10):\n\n");
+    
+    for (i = 1; i <= 10; i++) {
+        for (j = 1; j <= 10; j++) {
+            printf("%4d", i * j);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}{Pattern Generation: Star Pyramid}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int rows, i, j;
+    
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    
+    for (i = 1; i <= rows; i++) {
+        // Print spaces
+        for (j = 1; j <= rows - i; j++) {
+            printf(" ");
+        }
+        // Print stars
+        for (j = 1; j <= 2 * i - 1; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output (rows = 5):}
+\begin{verbatim}
+    *
+   ***
+  *****
+ *******
+*********
+\end{verbatim}
+\end{examplebox}
+
+\subsubsection{Common Errors}
+
+\begin{warningbox}{Loop-Related Mistakes}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Infinite Loop}
+    \begin{lstlisting}[language=C]
+int i = 1;
+while (i <= 10) {
+    printf("%d ", i);
+    // Forgot to increment i! Infinite loop
+}
+
+// Correct
+while (i <= 10) {
+    printf("%d ", i);
+    i++;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Off-by-One Error}
+    \begin{lstlisting}[language=C]
+// Want to print 1 to 10
+for (i = 1; i < 10; i++)  // Prints 1 to 9 only!
+for (i = 1; i <= 10; i++) // Correct
+    \end{lstlisting}
+    
+    \item \textbf{Semicolon After for}
+    \begin{lstlisting}[language=C]
+for (i = 1; i <= 5; i++);  // Semicolon creates empty loop!
+{
+    printf("%d ", i);  // Executes once with i = 6
+}
+    \end{lstlisting}
+    
+    \item \textbf{Uninitialized Loop Variable}
+    \begin{lstlisting}[language=C]
+int i;  // Garbage value
+while (i < 10) {  // Undefined behavior
+    printf("%d ", i);
+    i++;
+}
+    \end{lstlisting}
+\end{enumerate}
+\end{warningbox}
+
+\subsubsection{Real-World Applications}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Data Processing}: Reading sensor data until EOF
+    \item \textbf{User Menus}: Repeat menu until exit chosen
+    \item \textbf{Games}: Game loop (render, update, check input)
+    \item \textbf{Simulations}: Weather, traffic, physics simulations
+    \item \textbf{Database Operations}: Process all records in a table
+\end{itemize}
+
+\subsubsection{Quick Revision Points}
+
+\begin{tipbox}{Loops - Key Takeaways}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{for loop}: Known iterations, compact syntax
+    \item \textbf{while loop}: Unknown iterations, condition-based
+    \item \textbf{do-while loop}: Executes at least once
+    \item \textbf{Entry-controlled}: for, while (check before execution)
+    \item \textbf{Exit-controlled}: do-while (check after execution)
+    \item \textbf{Infinite loop}: Condition never becomes false
+    \item \textbf{Nested loops}: Loop inside loop (2D processing)
+    \item Always ensure loop variable is properly updated
+\end{enumerate}
+\end{tipbox}
+
+\newpage
+
+% ========================
+% JUMP STATEMENTS
+% ========================
+\subsection{Jump Statements}
+
+\subsubsection{Concept Overview}
+
+Jump statements alter the normal sequential flow of program execution. They allow immediate transfer of control to different parts of the program, enabling early exits, skipping iterations, and unconditional jumps.
+
+\begin{conceptbox}{Core Definition}
+Jump statements are control transfer statements that change the program's execution flow by jumping to a different location in the code. C provides four jump statements: break, continue, goto, and return.
+\end{conceptbox}
+
+\subsubsection{Why It Matters}
+
+Jump statements provide:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Loop Control}: Exit loops early or skip iterations
+    \item \textbf{Efficiency}: Avoid unnecessary iterations
+    \item \textbf{Error Handling}: Exit on error conditions
+    \item \textbf{Code Simplification}: Reduce nested conditions
+\end{enumerate}
+
+\subsubsection{Detailed Explanation}
+
+\textbf{1. break Statement}
+
+Immediately exits the innermost loop or switch statement.
+
+\begin{examplebox}{break in Loops}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int i;
+    
+    // Exit loop when i = 5
+    for (i = 1; i <= 10; i++) {
+        if (i == 5) {
+            printf("Breaking at i = %d\n", i);
+            break;  // Exit loop immediately
+        }
+        printf("%d ", i);
+    }
+    
+    printf("\nLoop ended.\n");
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+1 2 3 4 Breaking at i = 5
+Loop ended.
+\end{verbatim}
+\end{examplebox}
+
+\begin{examplebox}{Practical: Search in Array}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int numbers[] = {10, 25, 30, 45, 50};
+    int search = 30;
+    int i, found = 0;
+    
+    for (i = 0; i < 5; i++) {
+        if (numbers[i] == search) {
+            printf("Found %d at index %d\n", search, i);
+            found = 1;
+            break;  // No need to continue searching
+        }
+    }
+    
+    if (!found) {
+        printf("%d not found.\n", search);
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{2. continue Statement}
+
+Skips the rest of the current iteration and moves to the next iteration.
+
+\begin{examplebox}{continue in Loops}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int i;
+    
+    printf("Odd numbers from 1 to 10:\n");
+    for (i = 1; i <= 10; i++) {
+        if (i % 2 == 0) {
+            continue;  // Skip even numbers
+        }
+        printf("%d ", i);
+    }
+    printf("\n");
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Odd numbers from 1 to 10:
+1 3 5 7 9
+\end{verbatim}
+\end{examplebox}
+
+\begin{examplebox}{Practical: Sum of Positive Numbers Only}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int numbers[] = {10, -5, 20, -15, 30, -10, 40};
+    int i, sum = 0;
+    
+    for (i = 0; i < 7; i++) {
+        if (numbers[i] < 0) {
+            continue;  // Skip negative numbers
+        }
+        sum += numbers[i];
+    }
+    
+    printf("Sum of positive numbers: %d\n", sum);
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Sum of positive numbers: 100
+\end{verbatim}
+\end{examplebox}
+
+\textbf{break vs continue}
+
+\begin{lstlisting}[language=C]
+// break - exits loop completely
+for (i = 1; i <= 5; i++) {
+    if (i == 3) break;
+    printf("%d ", i);
+}
+// Output: 1 2
+
+// continue - skips to next iteration
+for (i = 1; i <= 5; i++) {
+    if (i == 3) continue;
+    printf("%d ", i);
+}
+// Output: 1 2 4 5
+\end{lstlisting}
+
+\textbf{3. goto Statement}
+
+Unconditional jump to a labeled statement. Generally discouraged in modern programming.
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+goto label;
+// ...
+label:
+    // statements
+\end{lstlisting}
+
+\begin{examplebox}{goto Example (Rare Use Case)}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    
+    for (i = 1; i <= 3; i++) {
+        for (j = 1; j <= 3; j++) {
+            if (i == 2 && j == 2) {
+                goto exit_loops;  // Exit nested loops
+            }
+            printf("(%d, %d) ", i, j);
+        }
+    }
+    
+exit_loops:
+    printf("\nExited nested loops.\n");
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+(1, 1) (1, 2) (1, 3) (2, 1) 
+Exited nested loops.
+\end{verbatim}
+\end{examplebox}
+
+\begin{warningbox}{goto - Use with Caution}
+\textbf{Why goto is discouraged:}
+\begin{itemize}[leftmargin=*]
+    \item Makes code difficult to read and understand
+    \item Creates "spaghetti code" - tangled control flow
+    \item Can be replaced with structured control statements
+    \item Violates structured programming principles
+\end{itemize}
+
+\textbf{Acceptable use cases (rare):}
+\begin{itemize}[leftmargin=*]
+    \item Breaking out of deeply nested loops
+    \item Error handling in low-level system code
+    \item Cleanup code before function exit
+\end{itemize}
+\end{warningbox}
+
+\textbf{4. return Statement}
+
+Exits function and optionally returns a value.
+
+\begin{lstlisting}[language=C]
+int max(int a, int b) {
+    if (a > b) {
+        return a;  // Exit function, return a
+    } else {
+        return b;  // Exit function, return b
+    }
+}
+
+void display() {
+    printf("Hello\n");
+    return;  // Optional for void functions
+}
+\end{lstlisting}
+
+\subsubsection{Common Errors}
+
+\begin{warningbox}{Jump Statement Pitfalls}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{break in Nested Loops}
+    \begin{lstlisting}[language=C]
+// break only exits innermost loop
+for (i = 1; i <= 3; i++) {
+    for (j = 1; j <= 3; j++) {
+        if (j == 2) break;  // Only exits inner loop
+    }
+}
+    \end{lstlisting}
+    
+    \item \textbf{Using goto Excessively}
+    \begin{lstlisting}[language=C]
+// BAD: Spaghetti code
+start:
+    if (condition1) goto label1;
+    // code
+label1:
+    if (condition2) goto start;
+    // Very confusing!
+    \end{lstlisting}
+\end{enumerate}
+\end{warningbox}
+
+\subsubsection{Real-World Applications}
+
+\begin{examplebox}{ATM Menu System}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int choice;
+    float balance = 1000.0;
+    float amount;
+    
+    while (1) {  // Infinite loop
+        printf("\n=== ATM MENU ===\n");
+        printf("1. Check Balance\n");
+        printf("2. Deposit\n");
+        printf("3. Withdraw\n");
+        printf("4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+        
+        switch (choice) {
+            case 1:
+                printf("Balance: $%.2f\n", balance);
+                break;
+            
+            case 2:
+                printf("Enter deposit amount: $");
+                scanf("%f", &amount);
+                if (amount > 0) {
+                    balance += amount;
+                    printf("Deposited $%.2f\n", amount);
+                } else {
+                    printf("Invalid amount!\n");
+                }
+                break;
+            
+            case 3:
+                printf("Enter withdrawal amount: $");
+                scanf("%f", &amount);
+                if (amount > 0 && amount <= balance) {
+                    balance -= amount;
+                    printf("Withdrawn $%.2f\n", amount);
+                } else {
+                    printf("Invalid amount or insufficient balance!\n");
+                }
+                break;
+            
+            case 4:
+                printf("Thank you for using ATM. Goodbye!\n");
+                return 0;  // Exit program
+            
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{Quick Revision Points}
+
+\begin{tipbox}{Jump Statements - Key Takeaways}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{break}: Exits innermost loop or switch immediately
+    \item \textbf{continue}: Skips rest of current iteration, continues next
+    \item \textbf{goto}: Unconditional jump to label (use sparingly)
+    \item \textbf{return}: Exits function, optionally returns value
+    \item break exits only the innermost loop in nested loops
+    \item continue skips to next iteration of the same loop
+    \item Avoid goto in modern code; use structured alternatives
+    \item return can appear multiple times in a function
+\end{enumerate}
+\end{tipbox}
+
+\newpage
+
+% ========================
+% MODULE 2 SUMMARY
+% ========================
+\section*{Module 2 Summary}
+\addcontentsline{toc}{section}{Module 2 Summary}
+
+\begin{conceptbox}{Module 2 Overview: Control Flow \& Decision Making}
+This module covered the mechanisms for controlling program execution flow:
+
+\vspace{0.5cm}
+
+\textbf{1. Conditional Statements}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{if}: Single condition execution
+    \item \textbf{if-else}: Two-way branching
+    \item \textbf{Nested if}: Complex decision trees
+    \item \textbf{else-if ladder}: Multiple sequential conditions
+    \item \textbf{switch-case}: Multi-way selection for discrete values
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{2. Looping Statements}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{for loop}: Known iterations, compact syntax
+    \item \textbf{while loop}: Unknown iterations, entry-controlled
+    \item \textbf{do-while loop}: At least one execution, exit-controlled
+    \item \textbf{Nested loops}: Multi-dimensional processing
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{3. Jump Statements}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{break}: Exit loop or switch
+    \item \textbf{continue}: Skip to next iteration
+    \item \textbf{goto}: Unconditional jump (rarely used)
+    \item \textbf{return}: Exit function with/without value
+\end{itemize}
+\end{conceptbox}
+
+\vspace{0.5cm}
+
+\begin{tipbox}{Real-World Applications Covered}
+\begin{itemize}[leftmargin=*]
+    \item Password validation logic
+    \item ATM menu systems
+    \item Pattern generation (Stars, Pyramids)
+    \item Grade calculators
+    \item Menu-driven programs
+    \item Search algorithms
+    \item Input validation
+\end{itemize}
+\end{tipbox}
+
+\newpage
+
+% ========================
+% MODULE 3: FUNCTIONS
+% ========================
+\section{Module 3: Functions \& Modular Programming}
+
+\begin{tipbox}{Module Duration \& Objectives}
+\textbf{Duration:} 12 Hours\\[0.3cm]
+\textbf{Learning Objectives:}
+\begin{itemize}[leftmargin=*]
+    \item Understand the "Divide and Conquer" strategy
+    \item Learn to write reusable and modular code
+    \item Grasp the concepts of recursion and variable scope
+\end{itemize}
+\end{tipbox}
+
+\subsection{Functions in C}
+
+\subsubsection{Concept Overview}
+
+A function is a self-contained block of code that performs a specific task. Functions are the building blocks of modular programming, enabling code reusability, organization, and maintainability.
+
+\begin{conceptbox}{Core Definition}
+A function is a named section of code that can be called (invoked) from other parts of the program. It takes input (parameters), processes it, and optionally returns output (return value). Functions implement the principle of "write once, use many times."
+\end{conceptbox}
+
+\subsubsection{Why It Matters}
+
+Functions are fundamental to professional programming:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Code Reusability}: Write once, use multiple times
+    \item \textbf{Modularity}: Break complex problems into manageable pieces
+    \item \textbf{Maintainability}: Fix bugs in one place, affect entire program
+    \item \textbf{Readability}: Self-documenting code with meaningful function names
+    \item \textbf{Testing}: Test individual functions independently
+    \item \textbf{Collaboration}: Team members work on different functions
+\end{enumerate}
+
+\subsubsection{Detailed Explanation}
+
+\textbf{Library Functions vs User-Defined Functions}
+
+\begin{conceptbox}{Function Types}
+\textbf{1. Library Functions (Built-in)}
+\begin{itemize}[leftmargin=*]
+    \item Pre-written functions provided by C standard library
+    \item Examples: printf(), scanf(), sqrt(), strlen()
+    \item Declared in header files: stdio.h, math.h, string.h
+\end{itemize}
+
+\textbf{2. User-Defined Functions}
+\begin{itemize}[leftmargin=*]
+    \item Custom functions created by programmer
+    \item Tailored to specific project requirements
+    \item Must be declared and defined before use
+\end{itemize}
+\end{conceptbox}
+
+\textbf{Function Components}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Function Declaration (Prototype)}: Tells compiler about function
+    \item \textbf{Function Definition}: Actual implementation of function
+    \item \textbf{Function Call}: Invokes the function
+\end{enumerate}
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+// 1. Function Declaration (Prototype)
+return_type function_name(parameter_list);
+
+// 2. Function Definition
+return_type function_name(parameter_list) {
+    // function body
+    // statements
+    return value;  // if return_type is not void
+}
+
+// 3. Function Call
+result = function_name(arguments);
+\end{lstlisting}
+
+\begin{examplebox}{Complete Function Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+// Function Declaration (Prototype)
+int add(int a, int b);
+
+int main() {
+    int num1 = 10, num2 = 20, sum;
+    
+    // Function Call
+    sum = add(num1, num2);
+    
+    printf("Sum = %d\n", sum);
+    
+    return 0;
+}
+
+// Function Definition
+int add(int a, int b) {
+    int result;
+    result = a + b;
+    return result;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Sum = 30
+\end{verbatim}
+\end{examplebox}
+
+\textbf{Why Use Function Prototypes?}
+
+Function prototypes allow the compiler to:
+\begin{itemize}[leftmargin=*]
+    \item Check for type mismatches in function calls
+    \item Enable calling function before its definition
+    \item Provide better error messages
+\end{itemize}
+
+\begin{lstlisting}[language=C]
+// Without prototype - may cause warning/error
+int main() {
+    int result = multiply(5, 3);  // Error: multiply not declared
+    return 0;
+}
+
+int multiply(int x, int y) {
+    return x * y;
+}
+
+// With prototype - works correctly
+int multiply(int x, int y);  // Prototype
+
+int main() {
+    int result = multiply(5, 3);  // OK
+    return 0;
+}
+
+int multiply(int x, int y) {
+    return x * y;
+}
+\end{lstlisting}
+
+\subsection{Types of Functions}
+
+\subsubsection{Based on Arguments and Return Values}
+
+Functions can be classified into four categories:
+
+\begin{conceptbox}{Function Categories}
+\begin{enumerate}[leftmargin=*]
+    \item No arguments, No return value
+    \item No arguments, With return value
+    \item With arguments, No return value
+    \item With arguments, With return value
+\end{enumerate}
+\end{conceptbox}
+
+\begin{examplebox}{1. No Arguments, No Return Value}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+void greet();  // Prototype
+
+int main() {
+    greet();  // Function call
+    return 0;
+}
+
+void greet() {
+    printf("Hello, World!\n");
+    printf("Welcome to C Programming.\n");
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}{2. No Arguments, With Return Value}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int getNumber();  // Prototype
+
+int main() {
+    int num;
+    num = getNumber();  // Function call and assignment
+    printf("You entered: %d\n", num);
+    return 0;
+}
+
+int getNumber() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    return n;  // Returns value
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}{3. With Arguments, No Return Value}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+void printSquare(int num);  // Prototype
+
+int main() {
+    int x = 5;
+    printSquare(x);  // Function call with argument
+    return 0;
+}
+
+void printSquare(int num) {
+    printf("Square of %d is %d\n", num, num * num);
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}{4. With Arguments, With Return Value}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int factorial(int n);  // Prototype
+
+int main() {
+    int num = 5, result;
+    
+    result = factorial(num);  // Call with argument, receive return value
+    
+    printf("Factorial of %d = %d\n", num, result);
+    
+    return 0;
+}
+
+int factorial(int n) {
+    int fact = 1, i;
+    
+    for (i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    
+    return fact;  // Returns calculated factorial
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Factorial of 5 = 120
+\end{verbatim}
+\end{examplebox}
+
+\subsection{Call by Value vs Call by Reference}
+
+\subsubsection{Call by Value}
+
+In call by value, a copy of the argument's value is passed to the function. Changes made to parameters inside the function do NOT affect the original variables.
+
+\begin{examplebox}{Call by Value Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+void modify(int x);
+
+int main() {
+    int num = 10;
+    
+    printf("Before function call: num = %d\n", num);
+    
+    modify(num);  // Passes copy of num
+    
+    printf("After function call: num = %d\n", num);  // Unchanged
+    
+    return 0;
+}
+
+void modify(int x) {
+    x = 50;  // Modifies local copy only
+    printf("Inside function: x = %d\n", x);
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Before function call: num = 10
+Inside function: x = 50
+After function call: num = 10
+\end{verbatim}
+\end{examplebox}
+
+\subsubsection{Call by Reference (Using Pointers)}
+
+In call by reference, the memory address (pointer) of the variable is passed. Changes made inside the function affect the original variable.
+
+\begin{examplebox}{Call by Reference Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+void modify(int *x);  // Pointer parameter
+
+int main() {
+    int num = 10;
+    
+    printf("Before function call: num = %d\n", num);
+    
+    modify(&num);  // Passes address of num
+    
+    printf("After function call: num = %d\n", num);  // Changed
+    
+    return 0;
+}
+
+void modify(int *x) {
+    *x = 50;  // Modifies original variable
+    printf("Inside function: *x = %d\n", *x);
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Before function call: num = 10
+Inside function: *x = 50
+After function call: num = 50
+\end{verbatim}
+\end{examplebox}
+
+\begin{examplebox}{Practical: Swap Two Numbers}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+void swap(int *a, int *b);  // Call by reference
+
+int main() {
+    int x = 10, y = 20;
+    
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    
+    swap(&x, &y);  // Pass addresses
+    
+    printf("After swap: x = %d, y = %d\n", x, y);
+    
+    return 0;
+}
+
+void swap(int *a, int *b) {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Before swap: x = 10, y = 20
+After swap: x = 20, y = 10
+\end{verbatim}
+\end{examplebox}
+
+\subsection{Recursion}
+
+\subsubsection{Concept Overview}
+
+Recursion is a technique where a function calls itself to solve a problem by breaking it into smaller, similar subproblems.
+
+\begin{conceptbox}{Recursion Components}
+Every recursive function must have:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Base Case}: Stopping condition to prevent infinite recursion
+    \item \textbf{Recursive Case}: Function calls itself with modified parameters
+\end{enumerate}
+\end{conceptbox}
+
+\subsubsection{How Recursion Works}
+
+\begin{enumerate}[leftmargin=*]
+    \item Function calls itself with a simpler version of the problem
+    \item Each call creates a new stack frame in memory
+    \item Process continues until base case is reached
+    \item Results are combined as stack unwinds
+\end{enumerate}
+
+\begin{examplebox}{Recursion: Factorial}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int factorial(int n);
+
+int main() {
+    int num = 5;
+    printf("Factorial of %d = %d\n", num, factorial(num));
+    return 0;
+}
+
+int factorial(int n) {
+    // Base case
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    // Recursive case
+    else {
+        return n * factorial(n - 1);
+    }
+}
+/*
+Execution trace for factorial(5):
+factorial(5) = 5 * factorial(4)
+             = 5 * (4 * factorial(3))
+             = 5 * (4 * (3 * factorial(2)))
+             = 5 * (4 * (3 * (2 * factorial(1))))
+             = 5 * (4 * (3 * (2 * 1)))
+             = 120
+*/
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}{Recursion: Fibonacci Series}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int fibonacci(int n);
+
+int main() {
+    int n = 7, i;
+    
+    printf("Fibonacci series up to %d terms:\n", n);
+    for (i = 0; i < n; i++) {
+        printf("%d ", fibonacci(i));
+    }
+    printf("\n");
+    
+    return 0;
+}
+
+int fibonacci(int n) {
+    // Base cases
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    
+    // Recursive case
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Fibonacci series up to 7 terms:
+0 1 1 2 3 5 8
+\end{verbatim}
+\end{examplebox}
+
+\textbf{Recursion vs Iteration}
+
+\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+\hline
+\textbf{Recursion} & \textbf{Iteration} \\
+\hline
+Function calls itself & Uses loops (for, while) \\
+\hline
+More intuitive for certain problems & Generally more efficient \\
+\hline
+Uses more memory (stack frames) & Uses less memory \\
+\hline
+Risk of stack overflow & No stack overflow risk \\
+\hline
+Elegant for tree/graph traversal & Better for simple repetition \\
+\hline
+Example: Factorial, Fibonacci & Example: Sum, loops \\
+\hline
+\end{tabular}
+
+\subsection{Scope and Lifetime of Variables}
+
+\subsubsection{Variable Scope}
+
+Scope determines where a variable can be accessed in the program.
+
+\begin{conceptbox}{Types of Scope}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Local Variables}: Declared inside function, accessible only within that function
+    \item \textbf{Global Variables}: Declared outside all functions, accessible throughout the program
+\end{enumerate}
+\end{conceptbox}
+
+\begin{examplebox}{Local vs Global Variables}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int globalVar = 100;  // Global variable
+
+void display() {
+    int localVar = 50;  // Local to display()
+    printf("Inside display():\n");
+    printf("Local: %d, Global: %d\n", localVar, globalVar);
+}
+
+int main() {
+    int localVar = 20;  // Local to main(), different from display's localVar
+    
+    printf("Inside main():\n");
+    printf("Local: %d, Global: %d\n", localVar, globalVar);
+    
+    display();
+    
+    // printf("%d", localVar in display);  // Error: not accessible
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Inside main():
+Local: 20, Global: 100
+Inside display():
+Local: 50, Global: 100
+\end{verbatim}
+\end{examplebox}
+
+\subsubsection{Static Variables}
+
+Static variables retain their value between function calls.
+
+\begin{examplebox}{Static Variables}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+void counter() {
+    static int count = 0;  // Initialized only once
+    count++;
+    printf("Count = %d\n", count);
+}
+
+int main() {
+    counter();  // Count = 1
+    counter();  // Count = 2
+    counter();  // Count = 3
+    counter();  // Count = 4
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Count = 1
+Count = 2
+Count = 3
+Count = 4
+\end{verbatim}
+\end{examplebox}
+
+\textbf{Without static:}
+\begin{lstlisting}[language=C]
+void counter() {
+    int count = 0;  // Reinitialized every call
+    count++;
+    printf("Count = %d\n", count);
+}
+// Output: Count = 1 (four times)
+\end{lstlisting}
+
+\subsection{Header Files}
+
+\subsubsection{Creating Custom Header Files}
+
+Header files (.h) contain function declarations, macros, and type definitions that can be shared across multiple source files.
+
+\begin{examplebox}{Creating Custom Header File}
+\textbf{File: mymath.h}
+\begin{lstlisting}[language=C]
+// mymath.h - Custom header file
+#ifndef MYMATH_H
+#define MYMATH_H
+
+// Function prototypes
+int add(int a, int b);
+int subtract(int a, int b);
+int multiply(int a, int b);
+float divide(int a, int b);
+
+#endif
+\end{lstlisting}
+
+\textbf{File: mymath.c}
+\begin{lstlisting}[language=C]
+// mymath.c - Implementation file
+#include "mymath.h"
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int subtract(int a, int b) {
+    return a - b;
+}
+
+int multiply(int a, int b) {
+    return a * b;
+}
+
+float divide(int a, int b) {
+    if (b != 0)
+        return (float)a / b;
+    else
+        return 0;
+}
+\end{lstlisting}
+
+\textbf{File: main.c}
+\begin{lstlisting}[language=C]
+// main.c - Main program
+#include <stdio.h>
+#include "mymath.h"  // Include custom header
+
+int main() {
+    int x = 10, y = 5;
+    
+    printf("%d + %d = %d\n", x, y, add(x, y));
+    printf("%d - %d = %d\n", x, y, subtract(x, y));
+    printf("%d * %d = %d\n", x, y, multiply(x, y));
+    printf("%d / %d = %.2f\n", x, y, divide(x, y));
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsection{Command Line Arguments}
+
+\subsubsection{argc and argv}
+
+Command-line arguments allow passing parameters to the program when it's executed.
+
+\begin{conceptbox}{Command Line Parameters}
+\begin{lstlisting}[language=C]
+int main(int argc, char *argv[]) {
+    // argc: Argument count (number of arguments)
+    // argv: Argument vector (array of strings)
+}
+\end{lstlisting}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{argc}: Integer count of arguments (including program name)
+    \item \textbf{argv[0]}: Program name
+    \item \textbf{argv[1], argv[2], ...}: Command-line arguments
+\end{itemize}
+\end{conceptbox}
+
+\begin{examplebox}{Command Line Arguments Example}
+\begin{lstlisting}[language=C]
+// File: cmdargs.c
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    int i;
+    
+    printf("Total arguments: %d\n", argc);
+    printf("Program name: %s\n", argv[0]);
+    
+    printf("\nAll arguments:\n");
+    for (i = 0; i < argc; i++) {
+        printf("argv[%d]: %s\n", i, argv[i]);
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+
+\textbf{Compilation and Execution:}
+\begin{verbatim}
+$ gcc cmdargs.c -o cmdargs
+$ ./cmdargs arg1 arg2 arg3
+
+Output:
+Total arguments: 4
+Program name: ./cmdargs
+
+All arguments:
+argv[0]: ./cmdargs
+argv[1]: arg1
+argv[2]: arg2
+argv[3]: arg3
+\end{verbatim}
+\end{examplebox}
+
+\begin{examplebox}{Practical: Simple Calculator with Command Line}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 4) {
+        printf("Usage: %s <num1> <operator> <num2>\n", argv[0]);
+        printf("Example: %s 10 + 5\n", argv[0]);
+        return 1;
+    }
+    
+    int num1 = atoi(argv[1]);  // Convert string to integer
+    char op = argv[2][0];
+    int num2 = atoi(argv[3]);
+    
+    int result;
+    
+    switch(op) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case 'x':
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 != 0)
+                result = num1 / num2;
+            else {
+                printf("Error: Division by zero!\n");
+                return 1;
+            }
+            break;
+        default:
+            printf("Invalid operator!\n");
+            return 1;
+    }
+    
+    printf("%d %c %d = %d\n", num1, op, num2, result);
+    
+    return 0;
+}
+\end{lstlisting}
+
+\textbf{Usage:}
+\begin{verbatim}
+$ ./calc 15 + 5
+15 + 5 = 20
+
+$ ./calc 20 - 8
+20 - 8 = 12
+\end{verbatim}
+\end{examplebox}
+
+\subsubsection{Common Errors}
+
+\begin{warningbox}{Function-Related Mistakes}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Missing Return Statement}
+    \begin{lstlisting}[language=C]
+int square(int x) {
+    int result = x * x;
+    // Missing return! Undefined behavior
+}
+    \end{lstlisting}
+    
+    \item \textbf{Type Mismatch}
+    \begin{lstlisting}[language=C]
+int getValue() {
+    return 3.14;  // Warning: implicit conversion from double to int
+}
+    \end{lstlisting}
+    
+    \item \textbf{Incorrect Argument Count}
+    \begin{lstlisting}[language=C]
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(5);  // Error: too few arguments
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Missing Base Case in Recursion}
+    \begin{lstlisting}[language=C]
+int factorial(int n) {
+    return n * factorial(n - 1);  // Infinite recursion! Stack overflow
+}
+    \end{lstlisting}
+\end{enumerate}
+\end{warningbox}
+
+\subsubsection{Real-World Applications}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Code Libraries}: Mathematical functions, string utilities
+    \item \textbf{API Development}: Exposing functionality to other programs
+    \item \textbf{Game Development}: Update(), render(), handleInput() functions
+    \item \textbf{Data Processing}: Parse(), validate(), transform() functions
+    \item \textbf{System Software}: Low-level OS functions
+\end{itemize}
+
+\subsubsection{Quick Revision Points}
+
+\begin{tipbox}{Functions - Key Takeaways}
+\begin{enumerate}[leftmargin=*]
+    \item Functions enable \textbf{code reusability} and \textbf{modularity}
+    \item \textbf{Prototype}: Declares function before definition
+    \item \textbf{Definition}: Actual implementation of function
+    \item \textbf{Call by Value}: Passes copy, original unchanged
+    \item \textbf{Call by Reference}: Passes address, original can change
+    \item \textbf{Recursion}: Function calls itself, needs base case
+    \item \textbf{Local variables}: Accessible only within function
+    \item \textbf{Global variables}: Accessible throughout program
+    \item \textbf{Static variables}: Retain value between calls
+    \item \textbf{argc, argv}: Command-line argument handling
+\end{enumerate}
+\end{tipbox}
+
+\newpage
+
+% ========================
+% MODULE 4: ARRAYS, STRINGS, POINTERS
+% ========================
+\section{Module 4: Arrays, Strings \& Pointers}
+
+\begin{tipbox}{Module Duration \& Objectives}
+\textbf{Duration:} 15 Hours\\[0.3cm]
+\textbf{Learning Objectives:}
+\begin{itemize}[leftmargin=*]
+    \item Handle collections of data efficiently using Arrays
+    \item Manipulate text data using Strings
+    \item Master direct memory access using Pointers
+\end{itemize}
+\end{tipbox}
+
+\subsection{Arrays}
+
+\subsubsection{Concept Overview}
+
+An array is a collection of elements of the same data type stored in contiguous memory locations. Arrays allow storing multiple values under a single variable name, accessed via index.
+
+\begin{conceptbox}{Core Definition}
+An array is a fixed-size, homogeneous data structure that stores elements of the same type in consecutive memory locations. Each element is accessed using an index starting from 0.
+\end{conceptbox}
+
+\subsubsection{Why It Matters}
+
+Arrays are fundamental because they:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Store Collections}: Handle multiple related data items
+    \item \textbf{Enable Iteration}: Process data using loops
+    \item \textbf{Implement Algorithms}: Sorting, searching, matrix operations
+    \item \textbf{Memory Efficiency}: Contiguous storage improves cache performance
+    \item \textbf{Real-World Modeling}: Student scores, temperatures, coordinates
+\end{enumerate}
+
+\subsubsection{Declaration and Initialization}
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+data_type array_name[size];
+\end{lstlisting}
+
+\begin{examplebox}{Array Declaration and Initialization}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    // Declaration only
+    int numbers[5];
+    
+    // Declaration with initialization
+    int scores[5] = {85, 90, 78, 92, 88};
+    
+    // Partial initialization (rest are 0)
+    int values[5] = {10, 20};  // {10, 20, 0, 0, 0}
+    
+    // Size inferred from initializer
+    int marks[] = {95, 87, 91, 89};  // Size = 4
+    
+    // Accessing elements
+    printf("First score: %d\n", scores[0]);
+    printf("Third score: %d\n", scores[2]);
+    
+    // Modifying elements
+    scores[1] = 95;
+    printf("Modified second score: %d\n", scores[1]);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{1D Arrays: Traversing, Sorting, Searching}
+
+\textbf{Traversing an Array}
+
+\begin{examplebox}{Array Traversal}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int numbers[5] = {10, 20, 30, 40, 50};
+    int i, sum = 0;
+    
+    // Traverse and display
+    printf("Array elements: ");
+    for (i = 0; i < 5; i++) {
+        printf("%d ", numbers[i]);
+        sum += numbers[i];
+    }
+    
+    printf("\nSum = %d\n", sum);
+    printf("Average = %.2f\n", sum / 5.0);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\textbf{Finding Maximum and Minimum}
+
+\begin{examplebox}{Max and Min in Array}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int arr[] = {45, 23, 67, 12, 89, 34};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int i, max, min;
+    
+    max = min = arr[0];
+    
+    for (i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    
+    printf("Maximum: %d\n", max);
+    printf("Minimum: %d\n", min);
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Maximum: 89
+Minimum: 12
+\end{verbatim}
+\end{examplebox}
+
+\textbf{Bubble Sort}
+
+\begin{examplebox}{Sorting Array - Bubble Sort}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int i, j, temp;
+    
+    printf("Original array: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    
+    // Bubble Sort
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    
+    printf("\nSorted array: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Original array: 64 34 25 12 22 11 90 
+Sorted array: 11 12 22 25 34 64 90
+\end{verbatim}
+\end{examplebox}
+
+\textbf{Linear Search}
+
+\begin{examplebox}{Searching in Array}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int arr[] = {10, 25, 30, 45, 50, 65, 70};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int search, i, found = 0;
+    
+    printf("Enter element to search: ");
+    scanf("%d", &search);
+    
+    for (i = 0; i < n; i++) {
+        if (arr[i] == search) {
+            printf("Element %d found at index %d\n", search, i);
+            found = 1;
+            break;
+        }
+    }
+    
+    if (!found) {
+        printf("Element %d not found.\n", search);
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{2D Arrays (Matrices)}
+
+2D arrays are arrays of arrays, useful for representing matrices, grids, and tables.
+
+\textbf{Declaration:}
+\begin{lstlisting}[language=C]
+data_type array_name[rows][columns];
+\end{lstlisting}
+
+\begin{examplebox}{2D Array - Matrix Operations}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int matrix[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+    int i, j;
+    
+    printf("Matrix:\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    
+    // Transpose
+    printf("\nTranspose:\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%d ", matrix[j][i]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Matrix:
+1 2 3 
+4 5 6 
+7 8 9 
+
+Transpose:
+1 4 7 
+2 5 8 
+3 6 9
+\end{verbatim}
+\end{examplebox}
+
+\begin{examplebox}{Matrix Addition}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int a[2][2] = {{1, 2}, {3, 4}};
+    int b[2][2] = {{5, 6}, {7, 8}};
+    int sum[2][2];
+    int i, j;
+    
+    // Add matrices
+    for (i = 0; i < 2; i++) {
+        for (j = 0; j < 2; j++) {
+            sum[i][j] = a[i][j] + b[i][j];
+        }
+    }
+    
+    printf("Sum of matrices:\n");
+    for (i = 0; i < 2; i++) {
+        for (j = 0; j < 2; j++) {
+            printf("%d ", sum[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Sum of matrices:
+6 8 
+10 12
+\end{verbatim}
+\end{examplebox}
+
+\subsection{String Handling}
+
+\subsubsection{Concept Overview}
+
+In C, strings are arrays of characters terminated by a null character `\0`. Understanding strings is crucial for text processing, user input, and file operations.
+
+\begin{conceptbox}{Strings in C}
+A string is a sequence of characters stored in a character array, terminated by the null character ('\textbackslash 0'). This null terminator marks the end of the string.
+\end{conceptbox}
+
+\subsubsection{Character Arrays vs String Literals}
+
+\begin{lstlisting}[language=C]
+// Character array (modifiable)
+char str1[10] = "Hello";
+
+// String literal (stored in read-only memory)
+char *str2 = "Hello";  // Cannot modify content
+
+// Difference
+str1[0] = 'h';  // OK
+// str2[0] = 'h';  // Error: segmentation fault
+\end{lstlisting}
+
+\begin{examplebox}{String Declaration and Initialization}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    // Method 1: Character array with explicit size
+    char str1[20] = "Hello";
+    
+    // Method 2: Size inferred
+    char str2[] = "World";
+    
+    // Method 3: Character by character
+    char str3[] = {'H', 'e', 'l', 'l', 'o', '\0'};  // \0 is crucial
+    
+    // Method 4: Input from user
+    char name[50];
+    printf("Enter your name: ");
+    scanf("%s", name);  // No & needed for arrays
+    
+    printf("Hello, %s!\n", name);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{Standard String Library Functions}
+
+C provides several standard library functions in `<string.h>` for string manipulation.
+
+\textbf{1. strlen() - String Length}
+
+\begin{examplebox}{strlen() Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[] = "Programming";
+    int length;
+    
+    length = strlen(str);
+    
+    printf("String: %s\n", str);
+    printf("Length: %d\n", length);
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+String: Programming
+Length: 11
+\end{verbatim}
+\end{examplebox}
+
+\textbf{2. strcpy() - String Copy}
+
+\begin{examplebox}{strcpy() Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char source[] = "Hello World";
+    char destination[50];
+    
+    strcpy(destination, source);
+    
+    printf("Source: %s\n", source);
+    printf("Destination: %s\n", destination);
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Source: Hello World
+Destination: Hello World
+\end{verbatim}
+\end{examplebox}
+
+\textbf{3. strcmp() - String Compare}
+
+\begin{examplebox}{strcmp() Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[] = "Apple";
+    char str2[] = "Banana";
+    char str3[] = "Apple";
+    
+    int result1 = strcmp(str1, str2);
+    int result2 = strcmp(str1, str3);
+    
+    printf("Comparing '%s' and '%s': %d\n", str1, str2, result1);
+    // Negative: str1 < str2
+    
+    printf("Comparing '%s' and '%s': %d\n", str1, str3, result2);
+    // Zero: str1 == str3
+    
+    if (strcmp(str1, str3) == 0) {
+        printf("Strings are equal.\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Comparing 'Apple' and 'Banana': -1
+Comparing 'Apple' and 'Apple': 0
+Strings are equal.
+\end{verbatim}
+\end{examplebox}
+
+\textbf{4. strcat() - String Concatenation}
+
+\begin{examplebox}{strcat() Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[50] = "Hello ";
+    char str2[] = "World";
+    
+    strcat(str1, str2);  // Appends str2 to str1
+    
+    printf("Concatenated string: %s\n", str1);
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Concatenated string: Hello World
+\end{verbatim}
+\end{examplebox}
+
+\subsection{Pointers}
+
+\subsubsection{Concept Overview}
+
+A pointer is a variable that stores the memory address of another variable. Pointers provide direct access to memory, enabling efficient data manipulation and dynamic memory allocation.
+
+\begin{conceptbox}{Core Definition}
+A pointer is a variable whose value is the memory address of another variable. Pointers enable indirect access to variables, dynamic memory management, and efficient array/string manipulation.
+\end{conceptbox}
+
+\subsubsection{Why Pointers Matter}
+
+Pointers are essential for:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Dynamic Memory}: Allocate memory at runtime
+    \item \textbf{Efficiency}: Pass large data structures by reference
+    \item \textbf{Data Structures}: Implement linked lists, trees, graphs
+    \item \textbf{Function Flexibility}: Modify variables via call by reference
+    \item \textbf{System Programming}: Direct hardware manipulation
+\end{enumerate}
+
+\subsubsection{Pointer Basics}
+
+\textbf{Key Operators:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{\&} (Address-of): Returns memory address of a variable
+    \item \textbf{*} (Dereference/Indirection): Accesses value at address
+\end{itemize}
+
+\textbf{Declaration:}
+\begin{lstlisting}[language=C]
+data_type *pointer_name;
+\end{lstlisting}
+
+\begin{examplebox}{Pointer Basics}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int num = 10;
+    int *ptr;
+    
+    ptr = &num;  // ptr stores address of num
+    
+    printf("Value of num: %d\n", num);
+    printf("Address of num: %p\n", &num);
+    printf("Value of ptr (address): %p\n", ptr);
+    printf("Value at address (dereferencing): %d\n", *ptr);
+    
+    // Modify via pointer
+    *ptr = 20;
+    
+    printf("\nAfter *ptr = 20:\n");
+    printf("Value of num: %d\n", num);  // num is now 20
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Value of num: 10
+Address of num: 0x7ffd5c3e4a0c
+Value of ptr (address): 0x7ffd5c3e4a0c
+Value at address (dereferencing): 10
+
+After *ptr = 20:
+Value of num: 20
+\end{verbatim}
+\end{examplebox}
+
+\subsubsection{Pointer Arithmetic}
+
+Pointers can be incremented, decremented, and compared.
+
+\begin{examplebox}{Pointer Arithmetic}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int *ptr = arr;  // Points to first element
+    int i;
+    
+    printf("Using pointer arithmetic:\n");
+    for (i = 0; i < 5; i++) {
+        printf("Address: %p, Value: %d\n", ptr, *ptr);
+        ptr++;  // Move to next element
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Using pointer arithmetic:
+Address: 0x7ffd5c3e4a00, Value: 10
+Address: 0x7ffd5c3e4a04, Value: 20
+Address: 0x7ffd5c3e4a08, Value: 30
+Address: 0x7ffd5c3e4a0c, Value: 40
+Address: 0x7ffd5c3e4a10, Value: 50
+\end{verbatim}
+\end{examplebox}
+
+\subsubsection{Relationship Between Pointers and Arrays}
+
+Array name is a constant pointer to the first element.
+
+\begin{lstlisting}[language=C]
+int arr[5] = {1, 2, 3, 4, 5};
+
+// These are equivalent:
+arr[0]  ==  *(arr + 0)  ==  *arr
+arr[1]  ==  *(arr + 1)
+arr[i]  ==  *(arr + i)
+\end{lstlisting}
+
+\begin{examplebox}{Pointers and Arrays}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int *ptr = arr;
+    int i;
+    
+    // Method 1: Array indexing
+    printf("Array indexing:\n");
+    for (i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+    
+    // Method 2: Pointer notation
+    printf("\n\nPointer notation:\n");
+    for (i = 0; i < 5; i++) {
+        printf("%d ", *(arr + i));
+    }
+    
+    // Method 3: Pointer incrementing
+    printf("\n\nPointer incrementing:\n");
+    ptr = arr;  // Reset pointer
+    for (i = 0; i < 5; i++) {
+        printf("%d ", *ptr);
+        ptr++;
+    }
+    printf("\n");
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsection{Composite Data Types}
+
+\subsubsection{Structures}
+
+Structures group variables of different types under a single name.
+
+\begin{examplebox}{Structure Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    char name[50];
+    int rollNo;
+    float marks;
+};
+
+int main() {
+    struct Student s1;
+    
+    // Assign values
+    strcpy(s1.name, "John Doe");
+    s1.rollNo = 101;
+    s1.marks = 85.5;
+    
+    // Display
+    printf("Student Details:\n");
+    printf("Name: %s\n", s1.name);
+    printf("Roll No: %d\n", s1.rollNo);
+    printf("Marks: %.2f\n", s1.marks);
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{Unions}
+
+Unions allow storing different data types in the same memory location.
+
+\begin{lstlisting}[language=C]
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+// All members share same memory
+// Size = size of largest member
+\end{lstlisting}
+
+\subsubsection{typedef}
+
+Creates alias for existing data types.
+
+\begin{lstlisting}[language=C]
+typedef struct {
+    int x;
+    int y;
+} Point;
+
+Point p1;  // No need to write "struct Point"
+p1.x = 10;
+p1.y = 20;
+\end{lstlisting}
+
+\subsection{Basic File I/O}
+
+\begin{examplebox}{File Operations}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    char text[100];
+    
+    // Write to file
+    fp = fopen("data.txt", "w");
+    if (fp != NULL) {
+        fprintf(fp, "Hello, File I/O!\n");
+        fprintf(fp, "This is line 2.\n");
+        fclose(fp);
+        printf("Data written to file.\n");
+    }
+    
+    // Read from file
+    fp = fopen("data.txt", "r");
+    if (fp != NULL) {
+        printf("\nFile contents:\n");
+        while (fgets(text, sizeof(text), fp) != NULL) {
+            printf("%s", text);
+        }
+        fclose(fp);
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\subsubsection{Quick Revision Points}
+
+\begin{tipbox}{Arrays, Strings, Pointers - Key Takeaways}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Arrays}: Fixed-size, same type, 0-indexed
+    \item \textbf{2D Arrays}: array[row][col], matrices
+    \item \textbf{Strings}: Char arrays ending with \textbackslash 0
+    \item \textbf{strlen, strcpy, strcmp, strcat}: String functions
+    \item \textbf{Pointers}: Store memory addresses
+    \item \textbf{\&}: Address-of operator
+    \item \textbf{*}: Dereference operator
+    \item \textbf{Array name = pointer} to first element
+    \item \textbf{Structures}: Group different types
+    \item \textbf{File I/O}: fopen, fprintf, fscanf, fclose
+\end{enumerate}
+\end{tipbox}
+
+\newpage
+
+% ========================
+% LEVEL III: ADVANCED TOPICS
+% ========================
+\chapter{Level III: ADVANCED TOPICS}
+\section*{Introduction to System-Level Programming Concepts}
+\addcontentsline{toc}{section}{Introduction to System-Level Programming Concepts}
+
+\begin{conceptbox}{Chapter Overview}
+This advanced level introduces system-level programming concepts including dynamic memory management, bitwise operations, enumerations, and preprocessor directives. These topics bridge high-level C programming with low-level system interactions.
+\end{conceptbox}
+
+% ========================
+% MODULE 5: ADVANCED C FEATURES
+% ========================
+\section{Module 5: Advanced C Features}
+
+\begin{tipbox}{Module Duration \& Objectives}
+\textbf{Duration:} 8 Hours\\[0.3cm]
+\textbf{Learning Objectives:}
+\begin{itemize}[leftmargin=*]
+    \item Manage memory dynamically at runtime
+    \item Utilize bit-level operations for system programming
+    \item Understand preprocessor directives for conditional compilation
+\end{itemize}
+\end{tipbox}
+
+\subsection{Dynamic Memory Allocation}
+
+\subsubsection{Concept Overview}
+
+Dynamic memory allocation allows programs to request memory during runtime based on actual needs, rather than pre-allocating fixed amounts at compile time.
+
+\begin{conceptbox}{Core Definition}
+Dynamic memory allocation is the process of allocating memory from the heap during program execution using functions like malloc(), calloc(), and realloc(). This memory must be explicitly freed using free() to prevent memory leaks.
+\end{conceptbox}
+
+\subsubsection{Why It Matters}
+
+Dynamic memory is essential for:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Flexibility}: Allocate exact amount needed at runtime
+    \item \textbf{Efficiency}: Don't waste memory on unused static arrays
+    \item \textbf{Data Structures}: Implement linked lists, trees, graphs
+    \item \textbf{Large Data}: Handle data too large for stack
+    \item \textbf{Variable Size}: Deal with unknown input sizes
+\end{enumerate}
+
+\subsubsection{Memory Segments}
+
+\begin{conceptbox}{Stack vs Heap}
+\textbf{Stack:}
+\begin{itemize}[leftmargin=*]
+    \item Automatic memory allocation
+    \item Local variables, function parameters
+    \item Limited size (typically 1-8 MB)
+    \item Fast allocation/deallocation
+    \item Automatic cleanup when function returns
+\end{itemize}
+
+\textbf{Heap:}
+\begin{itemize}[leftmargin=*]
+    \item Manual memory allocation
+    \item Dynamically allocated memory
+    \item Much larger (limited by system RAM)
+    \item Slower allocation/deallocation
+    \item Manual cleanup required (free())
+\end{itemize}
+\end{conceptbox}
+
+\subsubsection{Dynamic Memory Functions}
+
+\textbf{1. malloc() - Memory Allocation}
+
+Allocates specified bytes of memory, returns pointer to first byte.
+
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+void* malloc(size_t size);
+\end{lstlisting}
+
+\begin{examplebox}{malloc() Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *ptr;
+    int n, i;
+    
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    
+    // Allocate memory for n integers
+    ptr = (int*) malloc(n * sizeof(int));
+    
+    // Check if allocation successful
+    if (ptr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+    
+    // Input values
+    printf("Enter %d numbers:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &ptr[i]);
+    }
+    
+    // Display values
+    printf("You entered: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", ptr[i]);
+    }
+    printf("\n");
+    
+    // Free memory
+    free(ptr);
+    
+    return 0;
+
+    }
+\end{lstlisting}
+\end{examplebox}
+\textbf{2. calloc() - Contiguous Allocation}
+Allocates memory for array of elements, initializes all bytes to zero.
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+void* calloc(size_t num, size_t size);
+\end{lstlisting}
+\begin{examplebox}{malloc() vs calloc()}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+int *arr1, *arr2;
+int i;
+// Using malloc (garbage values)
+arr1 = (int*) malloc(5 * sizeof(int));
+printf("malloc (uninitialized): ");
+for (i = 0; i < 5; i++) {
+    printf("%d ", arr1[i]);  // Garbage values
+}
+
+// Using calloc (initialized to 0)
+arr2 = (int*) calloc(5, sizeof(int));
+printf("\ncalloc (initialized to 0): ");
+for (i = 0; i < 5; i++) {
+    printf("%d ", arr2[i]);  // All zeros
+}
+printf("\n");
+
+free(arr1);
+free(arr2);
+
+return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+malloc (uninitialized): 32767 0 4196421 0 0
+calloc (initialized to 0): 0 0 0 0 0
+\end{verbatim}
+\end{examplebox}
+\textbf{3. realloc() - Reallocation}
+Changes size of previously allocated memory.
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+void* realloc(void *ptr, size_t new_size);
+\end{lstlisting}
+\begin{examplebox}{realloc() Example}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+int *ptr;
+int n = 3, i;
+// Initial allocation
+ptr = (int*) malloc(n * sizeof(int));
+
+printf("Enter 3 numbers:\n");
+for (i = 0; i < n; i++) {
+    scanf("%d", &ptr[i]);
+}
+
+// Expand array to 5 elements
+n = 5;
+ptr = (int*) realloc(ptr, n * sizeof(int));
+
+printf("Enter 2 more numbers:\n");
+for (i = 3; i < n; i++) {
+    scanf("%d", &ptr[i]);
+}
+
+printf("All elements: ");
+for (i = 0; i < n; i++) {
+    printf("%d ", ptr[i]);
+}
+printf("\n");
+
+free(ptr);
+
+return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+\textbf{4. free() - Deallocation}
+Releases dynamically allocated memory.
+\textbf{Syntax:}
+\begin{lstlisting}[language=C]
+void free(void *ptr);
+\end{lstlisting}
+\begin{warningbox}{Memory Management Rules}
+\begin{enumerate}[leftmargin=*]
+\item Always check if allocation succeeded (ptr != NULL)
+\item Always free() dynamically allocated memory
+\item Don't access memory after free() (dangling pointer)
+\item Don't free() the same memory twice (double free)
+\item Don't free() stack memory
+\item Set pointer to NULL after free() (good practice)
+\end{enumerate}
+\end{warningbox}
+\begin{examplebox}{Preventing Memory Leaks}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+int ptr = (int) malloc(10 * sizeof(int));
+if (ptr == NULL) {
+    printf("Allocation failed!\n");
+    return 1;
+}
+
+// Use memory
+ptr[0] = 100;
+
+// Free memory
+free(ptr);
+
+// Good practice: Set to NULL
+ptr = NULL;
+
+// Attempting to use after free (bad!)
+// ptr[0] = 200;  // Undefined behavior
+
+return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+\subsection{Enumerations (enum)}
+\subsubsection{Concept Overview}
+Enumerations define a set of named integer constants, improving code readability and maintainability.
+\begin{conceptbox}{Core Definition}
+An enumeration (enum) is a user-defined data type consisting of a set of named integer constants. By default, the first constant is 0, and each subsequent constant increases by 1.
+\end{conceptbox}
+\begin{examplebox}{Enum Basics}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+enum Weekday {
+SUNDAY,     // 0
+MONDAY,     // 1
+TUESDAY,    // 2
+WEDNESDAY,  // 3
+THURSDAY,   // 4
+FRIDAY,     // 5
+SATURDAY    // 6
+};
+int main() {
+enum Weekday today = WEDNESDAY;
+printf("Today is day %d\n", today);
+
+if (today == WEDNESDAY) {
+    printf("It's the middle of the week!\n");
+}
+
+return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Today is day 3
+It's the middle of the week!
+\end{verbatim}
+\end{examplebox}
+\textbf{Custom Values}
+\begin{lstlisting}[language=C]
+enum Status {
+SUCCESS = 1,
+FAILURE = -1,
+PENDING = 0
+};
+enum Color {
+RED = 1,
+GREEN = 2,
+BLUE = 4,   // Can be used for bit flags
+YELLOW = 8
+};
+\end{lstlisting}
+\begin{examplebox}{Practical: Menu System with Enum}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+enum MenuOption {
+EXIT = 0,
+ADD = 1,
+SUBTRACT = 2,
+MULTIPLY = 3,
+DIVIDE = 4
+};
+int main() {
+enum MenuOption choice;
+int a, b;
+printf("=== Calculator ===\n");
+printf("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n0. Exit\n");
+printf("Enter choice: ");
+scanf("%d", &choice);
+
+if (choice == EXIT) {
+    printf("Goodbye!\n");
+    return 0;
+}
+
+printf("Enter two numbers: ");
+scanf("%d %d", &a, &b);
+
+switch(choice) {
+    case ADD:
+        printf("Result: %d\n", a + b);
+        break;
+    case SUBTRACT:
+        printf("Result: %d\n", a - b);
+        break;
+    case MULTIPLY:
+        printf("Result: %d\n", a * b);
+        break;
+    case DIVIDE:
+        if (b != 0)
+            printf("Result: %d\n", a / b);
+        else
+            printf("Division by zero!\n");
+        break;
+    default:
+        printf("Invalid choice!\n");
+}
+
+return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+\subsection{Bitwise Operators}
+\subsubsection{Concept Overview}
+Bitwise operators manipulate individual bits of integers, essential for low-level programming, embedded systems, and optimization.
+\begin{conceptbox}{Bitwise Operators}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Operator} & \textbf{Name} & \textbf{Description} \
+\hline
+& & AND & 1 if both bits are 1 \
+| & OR & 1 if at least one bit is 1 \
+^{} & XOR & 1 if bits are different \
+~{} & NOT & Inverts all bits \
+<< & Left Shift & Shift bits left, fill with 0 \
+
+
+& Right Shift & Shift bits right \
+\hline
+\end{tabular}
+\end{conceptbox}
+
+
+\begin{examplebox}{Bitwise AND, OR, XOR}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+void printBinary(int n) {
+int i;
+for (i = 7; i >= 0; i--) {
+printf("%d", (n >> i) & 1);
+}
+}
+int main() {
+int a = 12;  // Binary: 00001100
+int b = 10;  // Binary: 00001010
+printf("a = %d (", a);
+printBinary(a);
+printf(")\n");
+
+printf("b = %d (", b);
+printBinary(b);
+printf(")\n\n");
+
+printf("a & b = %d (", a & b);
+printBinary(a & b);  // 00001000 = 8
+printf(")\n");
+
+printf("a | b = %d (", a | b);
+printBinary(a | b);  // 00001110 = 14
+printf(")\n");
+
+printf("a ^ b = %d (", a ^ b);
+printBinary(a ^ b);  // 00000110 = 6
+printf(")\n");
+
+return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+\textbf{Shift Operators}
+\begin{examplebox}{Left and Right Shift}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+int main() {
+int num = 5;  // Binary: 00000101
+printf("Original: %d\n", num);
+
+// Left shift (multiply by 2^n)
+printf("num << 1 = %d (multiply by 2)\n", num << 1);  // 10
+printf("num << 2 = %d (multiply by 4)\n", num << 2);  // 20
+
+// Right shift (divide by 2^n)
+printf("num >> 1 = %d (divide by 2)\n", num >> 1);    // 2
+
+return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Original: 5
+num << 1 = 10 (multiply by 2)
+num << 2 = 20 (multiply by 4)
+num >> 1 = 2 (divide by 2)
+\end{verbatim}
+\end{examplebox}
+\textbf{Applications of Bitwise Operations}
+\begin{examplebox}{Setting/Clearing/Toggling Bits}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+int main() {
+int flags = 0;  // All flags off: 00000000
+// Set bit 2 (turn on)
+flags |= (1 << 2);  // flags = 00000100
+printf("After setting bit 2: %d\n", flags);
+
+// Set bit 5
+flags |= (1 << 5);  // flags = 00100100
+printf("After setting bit 5: %d\n", flags);
+
+// Check if bit 2 is set
+if (flags & (1 << 2)) {
+    printf("Bit 2 is ON\n");
+}
+
+// Clear bit 2 (turn off)
+flags &= ~(1 << 2);  // flags = 00100000
+printf("After clearing bit 2: %d\n", flags);
+
+// Toggle bit 5
+flags ^= (1 << 5);  // flags = 00000000
+printf("After toggling bit 5: %d\n", flags);
+
+return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+\subsection{The Preprocessor}
+\subsubsection{Concept Overview}
+The preprocessor is a text substitution tool that processes source code before compilation. It handles directives starting with #.
+\begin{conceptbox}{Preprocessor Directives}
+\begin{itemize}[leftmargin=*]
+\item \textbf{#include}: File inclusion
+\item \textbf{#define}: Macro definition
+\item \textbf{#ifdef, #ifndef, #endif}: Conditional compilation
+\item \textbf{#if, #elif, #else}: Conditional compilation with expressions
+\item \textbf{#undef}: Undefine macro
+\item \textbf{#pragma}: Compiler-specific directives
+\end{itemize}
+\end{conceptbox}
+\subsubsection{Macro Substitution}
+\textbf{#define}
+\begin{examplebox}{Simple Macros}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#define PI 3.14159
+#define MAX_SIZE 100
+#define GREETING "Hello, World!"
+int main() {
+float radius = 5.0;
+float area = PI * radius * radius;
+printf("%s\n", GREETING);
+printf("Circle area: %.2f\n", area);
+printf("Max size: %d\n", MAX_SIZE);
+
+return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+\textbf{Function-like Macros}
+\begin{examplebox}{Macros with Parameters}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#define SQUARE(x) ((x) * (x))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define ABS(x) ((x) < 0 ? -(x) : (x))
+int main() {
+int num = 5;
+printf("Square of %d: %d\n", num, SQUARE(num));
+printf("Max(10, 20): %d\n", MAX(10, 20));
+printf("Min(10, 20): %d\n", MIN(10, 20));
+printf("Abs(-15): %d\n", ABS(-15));
+
+return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+\begin{warningbox}{Macro Pitfalls}
+Always use parentheses in macro definitions:
+\begin{lstlisting}[language=C]
+// BAD
+#define SQUARE(x) x * x
+int result = SQUARE(5 + 3);  // Expands to: 5 + 3 * 5 + 3 = 23 (wrong!)
+// GOOD
+#define SQUARE(x) ((x) * (x))
+int result = SQUARE(5 + 3);  // Expands to: ((5 + 3) * (5 + 3)) = 64 (correct)
+\end{lstlisting}
+\end{warningbox}
+\subsubsection{Conditional Compilation}
+Compile different code based on conditions.
+\begin{examplebox}{Conditional Compilation}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#define DEBUG 1
+#define VERSION 2
+int main() {
+printf("Program started.\n");
+#ifdef DEBUG
+    printf("DEBUG: This is debug mode.\n");
+#endif
+
+#if VERSION == 1
+    printf("Version 1.0\n");
+#elif VERSION == 2
+    printf("Version 2.0\n");
+#else
+    printf("Unknown version\n");
+#endif
+
+printf("Program ended.\n");
+
+return 0;
+}
+\end{lstlisting}
+\textbf{Output:}
+\begin{verbatim}
+Program started.
+DEBUG: This is debug mode.
+Version 2.0
+Program ended.
+\end{verbatim}
+\end{examplebox}
+\textbf{Header File Guards}
+Prevent multiple inclusion of header files.
+\begin{lstlisting}[language=C]
+// myheader.h
+#ifndef MYHEADER_H
+#define MYHEADER_H
+// Function declarations
+void myFunction();
+#endif  // MYHEADER_H
+\end{lstlisting}
+\subsubsection{Real-World Applications}
+\begin{examplebox}{Cross-Platform Code}
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#ifdef _WIN32
+#define OS "Windows"
+#define CLEAR_SCREEN "cls"
+#elif linux
+#define OS "Linux"
+#define CLEAR_SCREEN "clear"
+#elif APPLE
+#define OS "macOS"
+#define CLEAR_SCREEN "clear"
+#else
+#define OS "Unknown"
+#define CLEAR_SCREEN ""
+#endif
+int main() {
+printf("Operating System: %s\n", OS);
+printf("Clear command: %s\n", CLEAR_SCREEN);
+return 0;
+}
+\end{lstlisting}
+\end{examplebox}
+\subsubsection{Quick Revision Points}
+\begin{tipbox}{Advanced Features - Key Takeaways}
+\begin{enumerate}[leftmargin=*]
+\item \textbf{malloc()}: Allocates memory, uninitialized
+\item \textbf{calloc()}: Allocates memory, initialized to 0
+\item \textbf{realloc()}: Resizes allocated memory
+\item \textbf{free()}: Deallocates memory, prevents leaks
+\item \textbf{Heap}: Dynamic memory, manual management
+\item \textbf{Stack}: Automatic memory, limited size
+\item \textbf{enum}: Named integer constants
+\item \textbf{Bitwise &, |, ^{}, ~{}}: Bit manipulation
+\item \textbf{<<, >>}: Shift operators (multiply/divide by 2)
+\item \textbf{#define}: Macro substitution
+\item \textbf{#ifdef}: Conditional compilation
+\item Always check malloc/calloc return value
+\item Always free() allocated memory
+\end{enumerate}
+\end{tipbox}
+\newpage
+% ========================
+% FINAL COURSE SUMMARY
+% ========================
+\section*{Complete Course Summary}
+\addcontentsline{toc}{section}{Complete Course Summary}
+\begin{conceptbox}{C Programming: Complete Journey}
+This comprehensive curriculum covered C programming from basics to advanced topics:
+\vspace{0.5cm}
+\textbf{Level I: BASICS (10 Hours)}
+\begin{itemize}[leftmargin=*]
+\item Introduction to C: History, features, compilation process
+\item Fundamentals of Syntax: Keywords, identifiers, data types, I/O
+\item Operators: Arithmetic, relational, logical, bitwise (intro)
+\end{itemize}
+\vspace{0.3cm}
+\textbf{Level II: CORE CONCEPTS (39 Hours)}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Module 2 (12 hrs)}: Control flow (if, switch, loops, jump statements)
+\item \textbf{Module 3 (12 hrs)}: Functions, recursion, scope, header files
+\item \textbf{Module 4 (15 hrs)}: Arrays, strings, pointers, structures, file I/O
+\end{itemize}
+\vspace{0.3cm}
+\textbf{Level III: ADVANCED TOPICS (8 Hours)}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Module 5 (8 hrs)}: Dynamic memory, enumerations, bitwise operations, preprocessor
+\end{itemize}
+\vspace{0.5cm}
+\textbf{Total Duration: 57 Hours}
+\end{conceptbox}
+\vspace{0.5cm}
+\begin{tipbox}{Key Skills Acquired}
+Upon completing this course, students will be able to:
+\begin{enumerate}[leftmargin=*]
+\item Write, compile, and debug C programs
+\item Implement algorithms using control structures and loops
+\item Design modular programs using functions
+\item Manipulate arrays, strings, and pointers effectively
+\item Manage memory dynamically
+\item Perform bit-level operations
+\item Use preprocessor directives for flexible compilation
+\item Read and write files
+\item Apply C programming to real-world problems
+\end{enumerate}
+\end{tipbox}
+\vspace{1cm}
+\begin{center}
+\Large\textbf{End of C Programming Course Notes}\
+\vspace{0.5cm}
+\normalsize
+\textit{Designed by D Charan Jeet}\
+\textit{Curriculum Designer & Technical Author}
+\end{center}
+% ========================
+% END DOCUMENT
+% ========================
+\end{document}
+
